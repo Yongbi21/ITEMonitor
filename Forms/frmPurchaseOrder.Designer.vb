@@ -1,0 +1,247 @@
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class frmPurchaseOrder
+    Inherits System.Windows.Forms.Form
+
+    'Form overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()>
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()>
+    Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPurchaseOrder))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.SearchLabel = New System.Windows.Forms.Label()
+        Me.SearchBox = New System.Windows.Forms.TextBox()
+        Me.tsNew = New System.Windows.Forms.ToolStripButton()
+        Me.tsEdit = New System.Windows.Forms.ToolStripButton()
+        Me.tsSave = New System.Windows.Forms.ToolStripButton()
+        Me.tsClose = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.bsPurchaseOrder = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Member_Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Supplier_Number = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Invoice_Date = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Invoice_Number = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Purchase_Order_Date = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Purchase_Order_Number = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PurchaseOrder_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewX1 = New DevComponents.DotNetBar.Controls.DataGridViewX()
+        Me.ToolStrip1.SuspendLayout()
+        CType(Me.bsPurchaseOrder, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
+        '
+        'SearchLabel
+        '
+        Me.SearchLabel.AutoSize = True
+        Me.SearchLabel.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SearchLabel.Location = New System.Drawing.Point(12, 28)
+        Me.SearchLabel.Name = "SearchLabel"
+        Me.SearchLabel.Size = New System.Drawing.Size(56, 19)
+        Me.SearchLabel.TabIndex = 31
+        Me.SearchLabel.Text = "Search:"
+        '
+        'SearchBox
+        '
+        Me.SearchBox.Location = New System.Drawing.Point(74, 28)
+        Me.SearchBox.Name = "SearchBox"
+        Me.SearchBox.Size = New System.Drawing.Size(171, 20)
+        Me.SearchBox.TabIndex = 32
+        '
+        'tsNew
+        '
+        Me.tsNew.Image = CType(resources.GetObject("tsNew.Image"), System.Drawing.Image)
+        Me.tsNew.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsNew.Name = "tsNew"
+        Me.tsNew.Size = New System.Drawing.Size(51, 22)
+        Me.tsNew.Text = "New"
+        '
+        'tsEdit
+        '
+        Me.tsEdit.Image = CType(resources.GetObject("tsEdit.Image"), System.Drawing.Image)
+        Me.tsEdit.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsEdit.Name = "tsEdit"
+        Me.tsEdit.Size = New System.Drawing.Size(47, 22)
+        Me.tsEdit.Text = "Edit"
+        '
+        'tsSave
+        '
+        Me.tsSave.Enabled = False
+        Me.tsSave.Image = CType(resources.GetObject("tsSave.Image"), System.Drawing.Image)
+        Me.tsSave.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsSave.Name = "tsSave"
+        Me.tsSave.Size = New System.Drawing.Size(51, 22)
+        Me.tsSave.Text = "Save"
+        '
+        'tsClose
+        '
+        Me.tsClose.Image = CType(resources.GetObject("tsClose.Image"), System.Drawing.Image)
+        Me.tsClose.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsClose.Name = "tsClose"
+        Me.tsClose.Size = New System.Drawing.Size(56, 22)
+        Me.tsClose.Text = "Close"
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsNew, Me.ToolStripSeparator1, Me.tsEdit, Me.ToolStripSeparator2, Me.tsSave, Me.ToolStripSeparator3, Me.tsClose})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 392)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+        Me.ToolStrip1.Size = New System.Drawing.Size(713, 25)
+        Me.ToolStrip1.TabIndex = 33
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
+        '
+        'Member_Name
+        '
+        Me.Member_Name.DataPropertyName = "Member_Name"
+        Me.Member_Name.HeaderText = "Member Name"
+        Me.Member_Name.Name = "Member_Name"
+        Me.Member_Name.ReadOnly = True
+        Me.Member_Name.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        '
+        'Supplier_Number
+        '
+        Me.Supplier_Number.DataPropertyName = "Supplier_Number"
+        Me.Supplier_Number.HeaderText = "Supplier Number"
+        Me.Supplier_Number.Name = "Supplier_Number"
+        Me.Supplier_Number.ReadOnly = True
+        '
+        'Invoice_Date
+        '
+        Me.Invoice_Date.DataPropertyName = "Invoice_Date"
+        Me.Invoice_Date.HeaderText = "Invoice Date"
+        Me.Invoice_Date.Name = "Invoice_Date"
+        Me.Invoice_Date.ReadOnly = True
+        '
+        'Invoice_Number
+        '
+        Me.Invoice_Number.DataPropertyName = "Invoice_Number"
+        Me.Invoice_Number.HeaderText = "Invoice Number"
+        Me.Invoice_Number.Name = "Invoice_Number"
+        Me.Invoice_Number.ReadOnly = True
+        '
+        'Purchase_Order_Date
+        '
+        Me.Purchase_Order_Date.DataPropertyName = "Purchase_Order_Date"
+        Me.Purchase_Order_Date.HeaderText = "Purchase Order Date"
+        Me.Purchase_Order_Date.Name = "Purchase_Order_Date"
+        Me.Purchase_Order_Date.ReadOnly = True
+        '
+        'Purchase_Order_Number
+        '
+        Me.Purchase_Order_Number.DataPropertyName = "Purchase_Order_Number"
+        Me.Purchase_Order_Number.HeaderText = "Purchase Order Number"
+        Me.Purchase_Order_Number.Name = "Purchase_Order_Number"
+        Me.Purchase_Order_Number.ReadOnly = True
+        '
+        'PurchaseOrder_Id
+        '
+        Me.PurchaseOrder_Id.DataPropertyName = "Purchase_Order_Id"
+        Me.PurchaseOrder_Id.HeaderText = "Purchase Order Id"
+        Me.PurchaseOrder_Id.Name = "PurchaseOrder_Id"
+        Me.PurchaseOrder_Id.ReadOnly = True
+        '
+        'DataGridViewX1
+        '
+        Me.DataGridViewX1.AllowUserToAddRows = False
+        Me.DataGridViewX1.AllowUserToDeleteRows = False
+        Me.DataGridViewX1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataGridViewX1.AutoGenerateColumns = False
+        Me.DataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataGridViewX1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PurchaseOrder_Id, Me.Purchase_Order_Number, Me.Purchase_Order_Date, Me.Invoice_Number, Me.Invoice_Date, Me.Supplier_Number, Me.Member_Name})
+        Me.DataGridViewX1.DataSource = Me.bsPurchaseOrder
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewX1.DefaultCellStyle = DataGridViewCellStyle1
+        Me.DataGridViewX1.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.DataGridViewX1.Location = New System.Drawing.Point(12, 66)
+        Me.DataGridViewX1.Name = "DataGridViewX1"
+        Me.DataGridViewX1.ReadOnly = True
+        Me.DataGridViewX1.RowHeadersVisible = False
+        Me.DataGridViewX1.Size = New System.Drawing.Size(687, 275)
+        Me.DataGridViewX1.TabIndex = 35
+        '
+        'frmPurchaseOrder
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(713, 417)
+        Me.Controls.Add(Me.DataGridViewX1)
+        Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.SearchBox)
+        Me.Controls.Add(Me.SearchLabel)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.Name = "frmPurchaseOrder"
+        Me.Text = "Form1"
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
+        CType(Me.bsPurchaseOrder, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
+
+    End Sub
+
+    Friend WithEvents SearchLabel As Label
+    Friend WithEvents SearchBox As TextBox
+    Friend WithEvents tsNew As ToolStripButton
+    Friend WithEvents tsEdit As ToolStripButton
+    Friend WithEvents tsSave As ToolStripButton
+    Friend WithEvents tsClose As ToolStripButton
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents Purchase_Order_Id As DataGridViewTextBoxColumn
+    Friend WithEvents bsPurchaseOrder As BindingSource
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents Member_Name As DataGridViewTextBoxColumn
+    Friend WithEvents Supplier_Number As DataGridViewTextBoxColumn
+    Friend WithEvents Invoice_Date As DataGridViewTextBoxColumn
+    Friend WithEvents Invoice_Number As DataGridViewTextBoxColumn
+    Friend WithEvents Purchase_Order_Date As DataGridViewTextBoxColumn
+    Friend WithEvents Purchase_Order_Number As DataGridViewTextBoxColumn
+    Friend WithEvents PurchaseOrder_Id As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewX1 As DevComponents.DotNetBar.Controls.DataGridViewX
+End Class
