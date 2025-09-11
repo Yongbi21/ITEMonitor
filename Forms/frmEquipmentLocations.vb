@@ -2,7 +2,9 @@
 
     Private isNew As Boolean = False
     Private da As New clDataAceesV2("DEVJB\SQLEXPRESS", "SGCuser", "Syst3ms")
-
+    Private dsrpt As New dsReports
+    Private t As New DataTable
+    Private r As DataRow
 
 #Region "Calling Function"
     Private Sub loadMain()
@@ -44,7 +46,7 @@
     Private Sub DataGridViewX1_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridViewX1.SelectionChanged
         If DataGridViewX1.SelectedRows.Count > 0 Then
             ' If a row is selected, populate the textbox and enable the Edit button
-            LocationsTextBox.Text = DataGridViewX1.SelectedRows(0).Cells("Column2").Value.ToString()
+            LocationsTextBox.Text = DataGridViewX1.SelectedRows(0).Cells("Location_Name").Value.ToString()
             tsEdit.Enabled = True
             tsSave.Enabled = False
             LocationsTextBox.Enabled = False
@@ -87,7 +89,7 @@
     Private Sub tsSave_Click(sender As Object, e As EventArgs) Handles tsSave.Click
         If DataGridViewX1.SelectedRows.Count > 0 Then
             ' Get the ID from the selected row (it's in the first column)
-            Dim locationId As String = DataGridViewX1.SelectedRows(0).Cells("Column1").Value.ToString()
+            Dim locationId As String = DataGridViewX1.SelectedRows(0).Cells("Location_Id").Value.ToString()
             Dim newLocationName As String = LocationsTextBox.Text
 
             If String.IsNullOrWhiteSpace(newLocationName) Then
@@ -158,6 +160,33 @@
     End Sub
 
 
+    Private Sub tsPrint_Click(sender As Object, e As EventArgs) Handles tsPrint.Click
+        dsrpt.Tables("Equpiment Location").Clear()
+        dsrpt.Tables("Equpiment Location").AcceptChanges()
+        t = dsrpt.Tables("Equpiment Location")
 
+
+
+        With bsEquipmentLocation
+            If .Count <= 0 Then
+                Return
+            End If
+
+            .MoveFirst()
+
+            For i As Integer = 0 To .Count - 1
+                r = t.NewRow
+                r("Location_Id") = .Current("Location_Id")
+                r("Location_Name") = .Current("Location_Name")
+                t.Rows.Add(r)
+                .MoveNext()
+            Next
+
+            m_report = New equipmentLocationReport
+            m_report.SetDataSource(dsrpt)
+            viewRPT()
+
+        End With
+    End Sub
 
 End Class

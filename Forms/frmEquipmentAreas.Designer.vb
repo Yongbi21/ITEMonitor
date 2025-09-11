@@ -38,10 +38,10 @@ Partial Class frmEquipmentAreas
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsPrint = New System.Windows.Forms.ToolStripButton()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewX1 = New DevComponents.DotNetBar.Controls.DataGridViewX()
         Me.AreasTextBox = New System.Windows.Forms.TextBox()
+        Me.Area_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Area_Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.bsEquipmentArea, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -140,20 +140,6 @@ Partial Class frmEquipmentAreas
         Me.Label1.TabIndex = 10
         Me.Label1.Text = "Areas:"
         '
-        'Column2
-        '
-        Me.Column2.DataPropertyName = "Area_Name"
-        Me.Column2.HeaderText = "Area Name"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "Area_Id"
-        Me.Column1.HeaderText = "Area ID"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
         'DataGridViewX1
         '
         Me.DataGridViewX1.AllowUserToAddRows = False
@@ -161,9 +147,11 @@ Partial Class frmEquipmentAreas
         Me.DataGridViewX1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataGridViewX1.AutoGenerateColumns = False
         Me.DataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewX1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2})
+        Me.DataGridViewX1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Area_Id, Me.Area_Name})
+        Me.DataGridViewX1.DataSource = Me.bsEquipmentArea
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -186,6 +174,20 @@ Partial Class frmEquipmentAreas
         Me.AreasTextBox.Name = "AreasTextBox"
         Me.AreasTextBox.Size = New System.Drawing.Size(156, 20)
         Me.AreasTextBox.TabIndex = 18
+        '
+        'Area_Id
+        '
+        Me.Area_Id.DataPropertyName = "Area_Id"
+        Me.Area_Id.HeaderText = "Area ID"
+        Me.Area_Id.Name = "Area_Id"
+        Me.Area_Id.ReadOnly = True
+        '
+        'Area_Name
+        '
+        Me.Area_Name.DataPropertyName = "Area_Name"
+        Me.Area_Name.HeaderText = "Area Name"
+        Me.Area_Name.Name = "Area_Name"
+        Me.Area_Name.ReadOnly = True
         '
         'frmEquipmentAreas
         '
@@ -219,12 +221,12 @@ Partial Class frmEquipmentAreas
     Friend WithEvents tsClose As ToolStripButton
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents Label1 As Label
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewX1 As DevComponents.DotNetBar.Controls.DataGridViewX
     Private WithEvents AreasTextBox As TextBox
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents tsPrint As ToolStripButton
+    Friend WithEvents Area_Id As DataGridViewTextBoxColumn
+    Friend WithEvents Area_Name As DataGridViewTextBoxColumn
 End Class

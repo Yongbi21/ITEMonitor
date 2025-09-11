@@ -39,10 +39,10 @@ Partial Class frmEquipmentLocations
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewX1 = New DevComponents.DotNetBar.Controls.DataGridViewX()
         Me.LocationsTextBox = New System.Windows.Forms.TextBox()
+        Me.Location_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Location_Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.bsEquipmentLocation, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -146,27 +146,18 @@ Partial Class frmEquipmentLocations
         Me.Label1.TabIndex = 22
         Me.Label1.Text = "Location:"
         '
-        'Column2
-        '
-        Me.Column2.DataPropertyName = "Location_Name"
-        Me.Column2.HeaderText = "Location Name"
-        Me.Column2.Name = "Column2"
-        '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "Location_Id"
-        Me.Column1.HeaderText = "Location ID"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
         'DataGridViewX1
         '
+        Me.DataGridViewX1.AllowUserToAddRows = False
+        Me.DataGridViewX1.AllowUserToDeleteRows = False
         Me.DataGridViewX1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataGridViewX1.AutoGenerateColumns = False
         Me.DataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewX1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2})
+        Me.DataGridViewX1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Location_Id, Me.Location_Name})
+        Me.DataGridViewX1.DataSource = Me.bsEquipmentLocation
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -178,6 +169,7 @@ Partial Class frmEquipmentLocations
         Me.DataGridViewX1.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.DataGridViewX1.Location = New System.Drawing.Point(13, 56)
         Me.DataGridViewX1.Name = "DataGridViewX1"
+        Me.DataGridViewX1.ReadOnly = True
         Me.DataGridViewX1.RowHeadersVisible = False
         Me.DataGridViewX1.Size = New System.Drawing.Size(510, 293)
         Me.DataGridViewX1.TabIndex = 23
@@ -188,6 +180,20 @@ Partial Class frmEquipmentLocations
         Me.LocationsTextBox.Name = "LocationsTextBox"
         Me.LocationsTextBox.Size = New System.Drawing.Size(150, 20)
         Me.LocationsTextBox.TabIndex = 24
+        '
+        'Location_Id
+        '
+        Me.Location_Id.DataPropertyName = "Location_Id"
+        Me.Location_Id.HeaderText = "Location ID"
+        Me.Location_Id.Name = "Location_Id"
+        Me.Location_Id.ReadOnly = True
+        '
+        'Location_Name
+        '
+        Me.Location_Name.DataPropertyName = "Location_Name"
+        Me.Location_Name.HeaderText = "Location Name"
+        Me.Location_Name.Name = "Location_Name"
+        Me.Location_Name.ReadOnly = True
         '
         'frmEquipmentLocations
         '
@@ -222,12 +228,12 @@ Partial Class frmEquipmentLocations
     Friend WithEvents tsClose As ToolStripButton
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents Label1 As Label
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewX1 As DevComponents.DotNetBar.Controls.DataGridViewX
     Private WithEvents LocationsTextBox As TextBox
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
+    Friend WithEvents Location_Id As DataGridViewTextBoxColumn
+    Friend WithEvents Location_Name As DataGridViewTextBoxColumn
 End Class

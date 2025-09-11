@@ -2,6 +2,9 @@
 
     Private isNew As Boolean = False
     Private da As New clDataAceesV2("DEVJB\SQLEXPRESS", "SGCuser", "Syst3ms")
+    Private dsrpt As New dsReports
+    Private t As New DataTable
+    Private r As DataRow
 
 #Region "Calling Function"
     Private Sub loadMain()
@@ -44,7 +47,7 @@
     Private Sub DataGridViewX1_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridViewX1.SelectionChanged
         If DataGridViewX1.SelectedRows.Count > 0 Then
             ' If a row is selected, populate the textbox and enable the Edit button
-            TypeTextBox.Text = DataGridViewX1.SelectedRows(0).Cells("Column2").Value.ToString()
+            TypeTextBox.Text = DataGridViewX1.SelectedRows(0).Cells("Type_Name").Value.ToString()
             tsEdit.Enabled = True
             tsSave.Enabled = False
             TypeTextBox.Enabled = False
@@ -86,7 +89,7 @@
     Private Sub tsSave_Click(sender As Object, e As EventArgs) Handles tsSave.Click
         If DataGridViewX1.SelectedRows.Count > 0 Then
             ' Get the ID from the selected row (it's in the first column)
-            Dim typeId As String = DataGridViewX1.SelectedRows(0).Cells("Column1").Value.ToString()
+            Dim typeId As String = DataGridViewX1.SelectedRows(0).Cells("Type_Id").Value.ToString()
             Dim newEquipmentTypeName As String = TypeTextBox.Text
 
             If String.IsNullOrWhiteSpace(newEquipmentTypeName) Then
@@ -156,6 +159,32 @@
         isNew = False
     End Sub
 
+    Private Sub tsPrint_Click(sender As Object, e As EventArgs) Handles tsPrint.Click
+        dsrpt.Tables("Equpiment Type").Clear()
+        dsrpt.Tables("Equpiment Type").AcceptChanges()
+        t = dsrpt.Tables("Equpiment Type")
 
 
+
+        With bsEquipmentType
+            If .Count <= 0 Then
+                Return
+            End If
+
+            .MoveFirst()
+
+            For i As Integer = 0 To .Count - 1
+                r = t.NewRow
+                r("Type_Id") = .Current("Type_Id")
+                r("Type_Name") = .Current("Type_Name")
+                t.Rows.Add(r)
+                .MoveNext()
+            Next
+
+            m_report = New equipmentTypeReport
+            m_report.SetDataSource(dsrpt)
+            viewRPT()
+
+        End With
+    End Sub
 End Class

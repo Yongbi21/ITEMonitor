@@ -40,9 +40,9 @@ Partial Class frmEquipmentType
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridViewX1 = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TypeTextBox = New System.Windows.Forms.TextBox()
+        Me.Type_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Type_Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.bsEquipmentType, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -156,7 +156,7 @@ Partial Class frmEquipmentType
         Me.DataGridViewX1.AutoGenerateColumns = False
         Me.DataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewX1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2})
+        Me.DataGridViewX1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Type_Id, Me.Type_Name})
         Me.DataGridViewX1.DataSource = Me.bsEquipmentType
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
@@ -174,26 +174,26 @@ Partial Class frmEquipmentType
         Me.DataGridViewX1.Size = New System.Drawing.Size(491, 284)
         Me.DataGridViewX1.TabIndex = 29
         '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "Type_Id"
-        Me.Column1.HeaderText = "Type ID"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.DataPropertyName = "Type_Name"
-        Me.Column2.HeaderText = "Type Name"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
         'TypeTextBox
         '
         Me.TypeTextBox.Location = New System.Drawing.Point(348, 23)
         Me.TypeTextBox.Name = "TypeTextBox"
         Me.TypeTextBox.Size = New System.Drawing.Size(156, 20)
         Me.TypeTextBox.TabIndex = 30
+        '
+        'Type_Id
+        '
+        Me.Type_Id.DataPropertyName = "Type_Id"
+        Me.Type_Id.HeaderText = "Type ID"
+        Me.Type_Id.Name = "Type_Id"
+        Me.Type_Id.ReadOnly = True
+        '
+        'Type_Name
+        '
+        Me.Type_Name.DataPropertyName = "Type_Name"
+        Me.Type_Name.HeaderText = "Type Name"
+        Me.Type_Name.Name = "Type_Name"
+        Me.Type_Name.ReadOnly = True
         '
         'frmEquipmentType
         '
@@ -230,10 +230,10 @@ Partial Class frmEquipmentType
     Friend WithEvents Label1 As Label
     Friend WithEvents DataGridViewX1 As DevComponents.DotNetBar.Controls.DataGridViewX
     Private WithEvents TypeTextBox As TextBox
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
+    Friend WithEvents Type_Id As DataGridViewTextBoxColumn
+    Friend WithEvents Type_Name As DataGridViewTextBoxColumn
 End Class

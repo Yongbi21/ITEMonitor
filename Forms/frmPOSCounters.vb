@@ -2,7 +2,9 @@
 
     Private isNew As Boolean = False
     Private da As New clDataAceesV2("DEVJB\SQLEXPRESS", "SGCuser", "Syst3ms")
-
+    Private dsrpt As New dsReports
+    Private t As New DataTable
+    Private r As DataRow
 
 #Region "Calling Function"
     Private Sub loadMain()
@@ -161,5 +163,34 @@
         isNew = False
     End Sub
 
+
+    Private Sub tsPrint_Click(sender As Object, e As EventArgs) Handles tsPrint.Click
+        dsrpt.Tables("POS Counters").Clear()
+        dsrpt.Tables("POS Counters").AcceptChanges()
+        t = dsrpt.Tables("POS Counters")
+
+
+
+        With bsCounter
+            If .Count <= 0 Then
+                Return
+            End If
+
+            .MoveFirst()
+
+            For i As Integer = 0 To .Count - 1
+                r = t.NewRow
+                r("Counter_Id") = .Current("Counter_Id")
+                r("Counter_Name") = .Current("Counter_Name")
+                t.Rows.Add(r)
+                .MoveNext()
+            Next
+
+            m_report = New posCounterReport
+            m_report.SetDataSource(dsrpt)
+            viewRPT()
+
+        End With
+    End Sub
 
 End Class

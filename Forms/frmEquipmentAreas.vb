@@ -2,6 +2,10 @@
 
     Private isNew As Boolean = False
     Private da As New clDataAceesV2("DEVJB\SQLEXPRESS", "SGCuser", "Syst3ms")
+    Private dsrpt As New dsReports
+    Private t As New DataTable
+    Private r As DataRow
+
 
 #Region "Calling Function"
     Private Sub loadMain()
@@ -45,7 +49,7 @@
     Private Sub DataGridViewX1_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridViewX1.SelectionChanged
         If DataGridViewX1.SelectedRows.Count > 0 Then
             ' If a row is selected, populate the textbox and enable the Edit button
-            AreasTextBox.Text = DataGridViewX1.SelectedRows(0).Cells("Column2").Value.ToString()
+            AreasTextBox.Text = DataGridViewX1.SelectedRows(0).Cells("Area_Name").Value.ToString()
             tsEdit.Enabled = True
             tsSave.Enabled = False
             AreasTextBox.Enabled = False
@@ -88,7 +92,7 @@
     Private Sub tsSave_Click(sender As Object, e As EventArgs) Handles tsSave.Click
         If DataGridViewX1.SelectedRows.Count > 0 Then
             ' Get the ID from the selected row (it's in the first column)
-            Dim areaId As String = DataGridViewX1.SelectedRows(0).Cells("Column1").Value.ToString()
+            Dim areaId As String = DataGridViewX1.SelectedRows(0).Cells("Area_Id").Value.ToString()
             Dim newAreaName As String = AreasTextBox.Text
 
             If String.IsNullOrWhiteSpace(newAreaName) Then
@@ -158,8 +162,35 @@
         isNew = False
     End Sub
 
+    Private Sub tsPrint_Click(sender As Object, e As EventArgs) Handles tsPrint.Click
+        dsrpt.Tables("Equipment Areas").Clear()
+        dsrpt.Tables("Equipment Areas").AcceptChanges()
+        t = dsrpt.Tables("Equipment Areas")
 
-    Private Sub DataGridViewX1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewX1.CellContentClick
 
+
+        With bsEquipmentArea
+            If .Count <= 0 Then
+                Return
+            End If
+
+            .MoveFirst()
+
+            For i As Integer = 0 To .Count - 1
+                r = t.NewRow
+                r("Area_Id") = .Current("Area_Id")
+                r("Area_Name") = .Current("Area_Name")
+                t.Rows.Add(r)
+                .MoveNext()
+            Next
+
+            m_report = New equipmentAreaReport
+            m_report.SetDataSource(dsrpt)
+            viewRPT()
+
+        End With
     End Sub
+
+
+
 End Class
