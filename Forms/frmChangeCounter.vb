@@ -7,21 +7,28 @@
 
 
 #Region "Calling Function"
-        Private Sub loadMain()
-            Dim tbl As New DataTable
+    Private Sub loadMain(Optional searchTerm As String = Nothing)
+        Dim tbl As New DataTable
+        Dim query As String
 
-        tbl = da.GetLoadData(dbName, "EXEC GetChangeCounterHistory")
+        If String.IsNullOrWhiteSpace(searchTerm) Then
+            query = "EXEC GetChangeCounterHistory"
+        Else
+            query = $"EXEC GetChangeCounterHistory @SearchTerm = '{searchTerm}'"
+        End If
+
+        tbl = da.GetLoadData(dbName, query)
         If tbl.Rows.Count > 0 Then
             bsChangeCounter.DataSource = tbl
         Else
             bsChangeCounter.DataSource = Nothing
         End If
-            SetUIState(False)
+        SetUIState(False)
 
-        End Sub
+    End Sub
 
-        Private Sub loadCounters()
-            Try
+    Private Sub loadCounters()
+        Try
             Dim locationTable = da.GetLoadData(dbName, "SELECT Counter_Id, Counter_Name FROM POSCounterName ORDER BY Counter_Name")
 
             ' Load From Location combo
@@ -39,14 +46,6 @@
         End Try
     End Sub
 
-    Private Sub btnChangeCounter_Click(sender As Object, e As EventArgs) Handles findBtnChangeCounter.Click
-        With frmLoadChangeCounter
-            .ShowDialog()
-            txtChangeCounter.Text = .selectedArea
-        End With
-
-    End Sub
-
 #End Region
 
     Private Sub SetUIState(isEditingState As Boolean)
@@ -57,11 +56,11 @@
         tsSave.Enabled = isEditingState
         tsCancel.Enabled = isEditingState
 
-        txtEquipmentId.Enabled = isEditingState
         cbFromCounter.Enabled = isEditingState
         cbToCounter.Enabled = isEditingState
         DataGridViewX1.Enabled = Not isEditingState
     End Sub
+
 
 
     Private Sub frmChangeCounter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -84,12 +83,15 @@
         End Try
     End Sub
 
+
+
     Private Sub tsNew_Click(sender As Object, e As EventArgs) Handles tsNew.Click
         isNew = True
         bsChangeCounter.AddNew()
         SetUIState(True)
         txtChangeCounter.Text = "Default"
     End Sub
+
     Private Sub tsEdit_Click(sender As Object, e As EventArgs) Handles tsEdit.Click
         isNew = False
 
@@ -101,6 +103,10 @@
         SetUIState(True)
     End Sub
 
+    Private Sub btnSearchITEquipment_Click(sender As Object, e As EventArgs) Handles btnSearchITEquipment.Click
+        loadMain(txtITEquipmentSearch.Text)
+    End Sub
+
 
     Private Sub tsSave_Click(sender As Object, e As EventArgs) Handles tsSave.Click
         If Not ValidateInput() Then Return
@@ -108,26 +114,27 @@
         Try
             Dim fromCounterId = cbFromCounter.SelectedValue.ToString()
             Dim toCounterId = cbToCounter.SelectedValue.ToString()
-            Dim equipmentId = txtEquipmentId.Text
+            'Dim equipmentId = txtITEquipmentSearch.Text
             Dim query As String
 
             If isNew Then
                 Dim changeDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
-                query = $"EXEC AddChangeCounter @FromCounterId = '{fromCounterId}', @ToCounterId = '{toCounterId}', @ActualChangeCounterDateTime = '{changeDateTime}', @ITEquipmentId = '{equipmentId}'"
+                query = $"EXEC AddChangeCounter @FromCounterId = '{fromCounterId}', @ToCounterId = '{toCounterId}', @ActualChangeCounterDateTime = '{changeDateTime}'"
                 da.ExcuteSQLQuery(dbName, query)
                 MessageBox.Show("Successfully added new record.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else ' isEditing
                 Dim changeCounterId = GetSafeString(CType(bsChangeCounter.Current, DataRowView)("Change_Counter_Id"))
-                query = $"UPDATE ChangeCounter SET From_Counter_Id = '{fromCounterId}', To_Counter_Id = '{toCounterId}', IT_Equipment_Id = '{equipmentId}' WHERE Change_Counter_Id = '{changeCounterId}'"
+                query = $"UPDATE ChangeCounter SET From_Counter_Id = '{fromCounterId}', To_Counter_Id = '{toCounterId}' WHERE Change_Counter_Id = '{changeCounterId}'"
                 da.ExcuteSQLQuery(dbName, query)
                 MessageBox.Show("Successfully updated record.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
 
-            loadMain()
+            loadMain(Nothing)
         Catch ex As Exception
             MessageBox.Show("Error saving data: " & ex.Message, "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 
     Private Sub tsCancel_Click(sender As Object, e As EventArgs) Handles tsCancel.Click
         Try
@@ -159,10 +166,6 @@
             MessageBox.Show("To Counter is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return False
         End If
-        If String.IsNullOrWhiteSpace(txtEquipmentId.Text) Then
-            MessageBox.Show("IT Equipment is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return False
-        End If
         Return True
     End Function
 
@@ -172,10 +175,10 @@
             cbFromCounter.SelectedValue = GetSafeString(currentRow("From_Counter_Id"))
             cbToCounter.SelectedValue = GetSafeString(currentRow("To_Counter_Id"))
             txtChangeCounter.Text = GetSafeString(currentRow("Change_Counter_Id"))
-            txtEquipmentId.Text = GetSafeString(currentRow("IT_Equipment_Id"))
+            txtITEquipmentSearch.Text = GetSafeString(currentRow("IT_Equipment_Id"))
         ElseIf bsChangeCounter.Count = 0 Then
             txtChangeCounter.Text = ""
-            txtEquipmentId.Text = ""
+            'txtITEquipmentSearch.Text = ""
             cbFromCounter.SelectedIndex = -1
             cbToCounter.SelectedIndex = -1
         End If
@@ -193,4 +196,6 @@
 
 
 End Class
+
+
 

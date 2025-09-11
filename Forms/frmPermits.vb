@@ -1,4 +1,4 @@
-﻿Public Class frmPermits
+﻿Public Class Permits
 
     Private isNew As Boolean = False
     Private da As New clDataAceesV2("DEVJB\SQLEXPRESS", "SGCuser", "Syst3ms")
@@ -21,10 +21,6 @@
     Private Sub frmPOSPermit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             loadMain()
-            DataGridViewX1.AutoGenerateColumns = False
-            DataGridViewX1.DataSource = bsPermits
-            DataGridViewX1.Columns("Column1").DataPropertyName = "Permit_Id"
-            DataGridViewX1.Columns("Column2").DataPropertyName = "Permit_Number"
 
 
             DataGridViewX1.Enabled = True
@@ -35,14 +31,13 @@
 
             ' Set initial state for editing controls
             tsEdit.Enabled = False
-            tsDelete.Enabled = False
             tsSave.Enabled = False
             PermitsTextBox.Enabled = False
 
             ' Set ToolTips for the ToolStrip buttons
             tsNew.ToolTipText = "Add a new permit"
             tsEdit.ToolTipText = "Edit the selected permit"
-            tsDelete.ToolTipText = "Delete the selected permit"
+            tsPrint.ToolTipText = "Print"
             tsSave.ToolTipText = "Save changes"
             tsClose.ToolTipText = "Close this form"
         Catch ex As Exception
@@ -56,14 +51,12 @@
             ' If a row is selected, populate the textbox and enable the Edit button
             PermitsTextBox.Text = DataGridViewX1.SelectedRows(0).Cells("Column2").Value.ToString()
             tsEdit.Enabled = True
-            tsDelete.Enabled = True
             tsSave.Enabled = False
             PermitsTextBox.Enabled = False
         Else
             ' If no row is selected, clear the textbox and disable buttons
             PermitsTextBox.Text = ""
             tsEdit.Enabled = False
-            tsDelete.Enabled = False
             tsSave.Enabled = False
             PermitsTextBox.Enabled = False
         End If
@@ -78,7 +71,6 @@
         isNew = False
         tsSave.Enabled = False
         tsEdit.Enabled = False
-        tsDelete.Enabled = False
         tsNew.Enabled = True
 
 

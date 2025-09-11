@@ -235,32 +235,52 @@ Public Class clDataAceesV2
         Try
             Using ConSql As SqlConnection = GetConnection(var_database)
                 Using cmd As New SqlCommand(spName, ConSql)
-                    ' This is important - it tells ADO.NET we are calling a stored procedure
                     cmd.CommandType = System.Data.CommandType.StoredProcedure
 
-                    ' Add the list of parameters
                     If parameters IsNot Nothing Then
                         cmd.Parameters.AddRange(parameters.ToArray())
                     End If
 
-                    ' Execute the command
                     cmd.ExecuteNonQuery()
 
-                    ' Find the output parameter and get its value
                     For Each p As SqlParameter In cmd.Parameters
                         If p.Direction = System.Data.ParameterDirection.Output OrElse p.Direction = System.Data.ParameterDirection.InputOutput Then
                             outputValue = p.Value.ToString()
-                            Exit For ' Exit after finding the first output parameter
+                            Exit For
                         End If
                     Next
                 End Using
                 ConSql.Close()
             End Using
         Catch ex As Exception
-            MsgBox(ex.Message)
+            ' Log the exception or handle it as needed
+            ' For now, we'll just return an empty string to indicate failure
         End Try
 
-        Return ""
+        Return outputValue
+    End Function
+
+
+    Public Function ExecuteNonQuery(ByVal var_database As String, ByVal commandText As String, ByVal parameters As List(Of SqlParameter)) As Integer
+        Dim affectedRows As Integer = 0
+        Try
+            Using con As SqlConnection = GetConnection(var_database)
+                Using cmd As New SqlCommand(commandText, con)
+                    cmd.CommandType = System.Data.CommandType.Text
+
+                    If parameters IsNot Nothing Then
+                        cmd.Parameters.AddRange(parameters.ToArray())
+                    End If
+
+                    affectedRows = cmd.ExecuteNonQuery()
+                End Using
+            End Using
+        Catch ex As Exception
+            ' For a class library, it's better to log exceptions or re-throw them.
+            ' We'll re-throw here to make the calling code aware of the problem.
+            Throw
+        End Try
+        Return affectedRows
     End Function
 
 

@@ -24,7 +24,7 @@ Public Class frmMain
     End Sub
 
     Private Sub PermitsButton(sender As Object, e As EventArgs) Handles POSPermit.Click
-        OpenForm(New frmPermits())
+        OpenForm(New Permits())
     End Sub
 
     Private Sub EquipmentTypesButton(sender As Object, e As EventArgs) Handles ButtonItem1.Click

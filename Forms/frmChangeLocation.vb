@@ -7,10 +7,17 @@ Public Class frmChangeLocation
 
 
 #Region "Calling Function"
-    Private Sub loadMain()
+    Private Sub loadMain(Optional searchTerm As String = Nothing)
         Dim tbl As New DataTable
+        Dim query As String
 
-        tbl = da.GetLoadData(dbName, "EXEC GetChangeLocationHistory")
+        If String.IsNullOrWhiteSpace(searchTerm) Then
+            query = "EXEC GetChangeLocationHistory"
+        Else
+            query = $"EXEC GetChangeLocationHistory @SearchTerm = '{searchTerm}'"
+        End If
+
+        tbl = da.GetLoadData(dbName, query)
         If tbl.Rows.Count > 0 Then
             bsChangeLocation.DataSource = tbl
         Else
@@ -39,14 +46,9 @@ Public Class frmChangeLocation
         End Try
     End Sub
 
-    Private Sub btnFindChangeLoc_Click(sender As Object, e As EventArgs) Handles findBtnChangeLoc.Click
-        With frmLoadChangeLocation
-            .ShowDialog()
-            txtChangeLocation.Text = .selectedArea
-        End With
-    End Sub
-
 #End Region
+
+
 
     Private Sub SetUIState(isEditingState As Boolean)
         isEditing = isEditingState
@@ -56,7 +58,6 @@ Public Class frmChangeLocation
         tsSave.Enabled = isEditingState
         tsCancel.Enabled = isEditingState
 
-        txtEquipmentId.Enabled = isEditingState
         cbFromLocation.Enabled = isEditingState
         cbToLocation.Enabled = isEditingState
         DataGridViewX1.Enabled = Not isEditingState
@@ -65,7 +66,7 @@ Public Class frmChangeLocation
 
     Private Sub frmChangeLocation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            loadMain()
+            loadMain(Nothing)
             loadLocations()
 
             DataGridViewX1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
@@ -100,6 +101,10 @@ Public Class frmChangeLocation
         SetUIState(True)
     End Sub
 
+    Private Sub btnSearchITEquipment_Click(sender As Object, e As EventArgs) Handles btnSearchITEquipment.Click
+        loadMain(txtITEquipmentSearch.Text)
+    End Sub
+
 
     Private Sub tsSave_Click(sender As Object, e As EventArgs) Handles tsSave.Click
         If Not ValidateInput() Then Return
@@ -107,22 +112,22 @@ Public Class frmChangeLocation
         Try
             Dim fromLocationId = cbFromLocation.SelectedValue.ToString()
             Dim toLocationId = cbToLocation.SelectedValue.ToString()
-            Dim equipmentId = txtEquipmentId.Text
+            'Dim equipmentId = txtEquipmentId.Text
             Dim query As String
 
             If isNew Then
                 Dim changeDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
-                query = $"EXEC AddChangeLocation @FromLocationId = '{fromLocationId}', @ToLocationId = '{toLocationId}', @ActualChangeLocationDateTime = '{changeDateTime}', @ITEquipmentId = '{equipmentId}'"
+                query = $"EXEC AddChangeLocation @FromLocationId = '{fromLocationId}', @ToLocationId = '{toLocationId}', @ActualChangeLocationDateTime = '{changeDateTime}'"
                 da.ExcuteSQLQuery(dbName, query)
                 MessageBox.Show("Successfully added new record.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else ' isEditing
                 Dim changeLocationId = GetSafeString(CType(bsChangeLocation.Current, DataRowView)("Change_Location_Id"))
-                query = $"UPDATE ChangeLocation SET From_Location_Id = '{fromLocationId}', To_Location_Id = '{toLocationId}', IT_Equipment_Id = '{equipmentId}' WHERE Change_Location_Id = '{changeLocationId}'"
+                query = $"UPDATE ChangeLocation SET From_Location_Id = '{fromLocationId}', To_Location_Id = '{toLocationId}' WHERE Change_Location_Id = '{changeLocationId}'"
                 da.ExcuteSQLQuery(dbName, query)
                 MessageBox.Show("Successfully updated record.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
 
-            loadMain()
+            loadMain(Nothing)
         Catch ex As Exception
             MessageBox.Show("Error saving data: " & ex.Message, "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -158,10 +163,6 @@ Public Class frmChangeLocation
             MessageBox.Show("To Location is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return False
         End If
-        If String.IsNullOrWhiteSpace(txtEquipmentId.Text) Then
-            MessageBox.Show("IT Equipment is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return False
-        End If
         Return True
     End Function
 
@@ -171,10 +172,10 @@ Public Class frmChangeLocation
             cbFromLocation.SelectedValue = GetSafeString(currentRow("From_Location_Id"))
             cbToLocation.SelectedValue = GetSafeString(currentRow("To_Location_Id"))
             txtChangeLocation.Text = GetSafeString(currentRow("Change_Location_Id"))
-            txtEquipmentId.Text = GetSafeString(currentRow("IT_Equipment_Id"))
+            txtITEquipmentSearch.Text = GetSafeString(currentRow("IT_Equipment_Id"))
         ElseIf bsChangeLocation.Count = 0 Then
             txtChangeLocation.Text = ""
-            txtEquipmentId.Text = ""
+            'txtEquipmentId.Text = ""
             cbFromLocation.SelectedIndex = -1
             cbToLocation.SelectedIndex = -1
         End If

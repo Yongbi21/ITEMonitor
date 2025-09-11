@@ -31,18 +31,18 @@ Partial Class frmEquipmentType
         Me.tsNew = New System.Windows.Forms.ToolStripButton()
         Me.tsEdit = New System.Windows.Forms.ToolStripButton()
         Me.tsSave = New System.Windows.Forms.ToolStripButton()
-        Me.tsDelete = New System.Windows.Forms.ToolStripButton()
+        Me.tsPrint = New System.Windows.Forms.ToolStripButton()
         Me.tsClose = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridViewX1 = New DevComponents.DotNetBar.Controls.DataGridViewX()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TypeTextBox = New System.Windows.Forms.TextBox()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         CType(Me.bsEquipmentType, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -90,13 +90,12 @@ Partial Class frmEquipmentType
         Me.tsSave.Size = New System.Drawing.Size(51, 22)
         Me.tsSave.Text = "Save"
         '
-        'tsDelete
+        'tsPrint
         '
-        Me.tsDelete.Enabled = False
-        Me.tsDelete.Image = CType(resources.GetObject("tsDelete.Image"), System.Drawing.Image)
-        Me.tsDelete.Name = "tsDelete"
-        Me.tsDelete.Size = New System.Drawing.Size(60, 22)
-        Me.tsDelete.Text = "Delete"
+        Me.tsPrint.Image = CType(resources.GetObject("tsPrint.Image"), System.Drawing.Image)
+        Me.tsPrint.Name = "tsPrint"
+        Me.tsPrint.Size = New System.Drawing.Size(52, 22)
+        Me.tsPrint.Text = "Print"
         '
         'tsClose
         '
@@ -109,13 +108,33 @@ Partial Class frmEquipmentType
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsNew, Me.ToolStripSeparator1, Me.tsEdit, Me.ToolStripSeparator2, Me.tsSave, Me.ToolStripSeparator3, Me.tsDelete, Me.ToolStripSeparator4, Me.tsClose})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsNew, Me.ToolStripSeparator1, Me.tsEdit, Me.ToolStripSeparator2, Me.tsSave, Me.ToolStripSeparator3, Me.tsPrint, Me.ToolStripSeparator4, Me.tsClose})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 366)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.ToolStrip1.Size = New System.Drawing.Size(532, 25)
         Me.ToolStrip1.TabIndex = 27
         Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
         '
         'Label1
         '
@@ -176,26 +195,6 @@ Partial Class frmEquipmentType
         Me.TypeTextBox.Size = New System.Drawing.Size(156, 20)
         Me.TypeTextBox.TabIndex = 30
         '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
-        '
         'frmEquipmentType
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -225,7 +224,7 @@ Partial Class frmEquipmentType
     Friend WithEvents tsNew As ToolStripButton
     Friend WithEvents tsEdit As ToolStripButton
     Friend WithEvents tsSave As ToolStripButton
-    Friend WithEvents tsDelete As ToolStripButton
+    Friend WithEvents tsPrint As ToolStripButton
     Friend WithEvents tsClose As ToolStripButton
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents Label1 As Label

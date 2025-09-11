@@ -128,16 +128,22 @@
     <Compile Include="Forms\frmEquipmentType.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLoadChangeCounter.Designer.vb">
-      <DependentUpon>frmLoadChangeCounter.vb</DependentUpon>
+    <Compile Include="Forms\frmLoadCounter.Designer.vb">
+      <DependentUpon>frmLoadCounter.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmLoadChangeCounter.vb">
+    <Compile Include="Forms\frmLoadCounter.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLoadChangeLocation.Designer.vb">
-      <DependentUpon>frmLoadChangeLocation.vb</DependentUpon>
+    <Compile Include="Forms\frmLoadPermitNumber.Designer.vb">
+      <DependentUpon>frmLoadPermitNumber.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmLoadChangeLocation.vb">
+    <Compile Include="Forms\frmLoadPermitNumber.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLoadPurchaseOrder.Designer.vb">
+      <DependentUpon>frmLoadPurchaseOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLoadPurchaseOrder.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmPermits.Designer.vb">
@@ -212,11 +218,14 @@
     <EmbeddedResource Include="Forms\frmEquipmentType.resx">
       <DependentUpon>frmEquipmentType.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLoadChangeCounter.resx">
-      <DependentUpon>frmLoadChangeCounter.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\frmLoadCounter.resx">
+      <DependentUpon>frmLoadCounter.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLoadChangeLocation.resx">
-      <DependentUpon>frmLoadChangeLocation.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\frmLoadPermitNumber.resx">
+      <DependentUpon>frmLoadPermitNumber.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLoadPurchaseOrder.resx">
+      <DependentUpon>frmLoadPurchaseOrder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>

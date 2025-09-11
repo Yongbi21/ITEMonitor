@@ -21,10 +21,6 @@
 
     Private Sub frmEquipmentAreas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         loadMain()
-        DataGridViewX1.AutoGenerateColumns = False
-        DataGridViewX1.DataSource = bsEquipmentArea
-        DataGridViewX1.Columns("Column1").DataPropertyName = "Area_Id"
-        DataGridViewX1.Columns("Column2").DataPropertyName = "Area_Name"
 
         ' --- Force Grid to be Enabled and Selectable ---
         DataGridViewX1.Enabled = True
@@ -35,14 +31,13 @@
 
         ' Set initial state for editing controls
         tsEdit.Enabled = False
-        tsDelete.Enabled = False
         tsSave.Enabled = False
         AreasTextBox.Enabled = False
 
         ' Set ToolTips for the ToolStrip buttons
         tsNew.ToolTipText = "Add a new area"
         tsEdit.ToolTipText = "Edit the selected area"
-        tsDelete.ToolTipText = "Delete the selected area"
+        tsPrint.ToolTipText = "Print"
         tsSave.ToolTipText = "Save changes"
         tsClose.ToolTipText = "Close this form"
     End Sub
@@ -52,14 +47,12 @@
             ' If a row is selected, populate the textbox and enable the Edit button
             AreasTextBox.Text = DataGridViewX1.SelectedRows(0).Cells("Column2").Value.ToString()
             tsEdit.Enabled = True
-            tsDelete.Enabled = True
             tsSave.Enabled = False
             AreasTextBox.Enabled = False
         Else
             ' If no row is selected, clear the textbox and disable buttons
             AreasTextBox.Text = ""
             tsEdit.Enabled = False
-            tsDelete.Enabled = False
             tsSave.Enabled = False
             AreasTextBox.Enabled = False
         End If
@@ -74,7 +67,6 @@
         isNew = False
         tsSave.Enabled = False
         tsEdit.Enabled = False
-        tsDelete.Enabled = False
         tsNew.Enabled = True
 
         ' Make textbox read-only again
@@ -166,34 +158,6 @@
         isNew = False
     End Sub
 
-    Private Sub tsDelete_Click(sender As Object, e As EventArgs) Handles tsDelete.Click
-        If DataGridViewX1.SelectedRows.Count > 0 Then
-            ' Get the ID and name from the selected row
-            Dim areaId As String = DataGridViewX1.SelectedRows(0).Cells("Column1").Value.ToString()
-            Dim areaName As String = DataGridViewX1.SelectedRows(0).Cells("Column2").Value.ToString()
-
-            ' Confirm with the user before deleting
-            Dim result = MessageBox.Show($"Are you sure you want to delete the area '{areaName}'?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-
-            If result = DialogResult.Yes Then
-                Try
-                    ' Create parameters for the Delete stored procedure
-                    Dim sqlParams As New List(Of System.Data.SqlClient.SqlParameter)
-                    sqlParams.Add(New System.Data.SqlClient.SqlParameter("@AreaId", areaId))
-
-                    ' Call the data access function to execute the delete
-                    If da.ExcuteSQLQuery(dbName, "DeleteEquipmentArea", sqlParams) Then
-                        MessageBox.Show("Area deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        loadMain() ' Refresh the grid
-                    Else
-                        MessageBox.Show("Failed to delete area.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-                Catch ex As Exception
-                    MessageBox.Show("An error occurred:" & vbCrLf & ex.ToString(), "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End Try
-            End If
-        End If
-    End Sub
 
     Private Sub DataGridViewX1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewX1.CellContentClick
 

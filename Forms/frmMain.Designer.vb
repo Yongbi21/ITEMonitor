@@ -96,10 +96,12 @@ Partial Class frmMain
         '
         'ReferenceData
         '
+        Me.ReferenceData.AutoExpandOnClick = True
         Me.ReferenceData.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
         Me.ReferenceData.FontBold = True
         Me.ReferenceData.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.ReferenceData.Name = "ReferenceData"
+        Me.ReferenceData.PopupSide = DevComponents.DotNetBar.ePopupSide.Right
         Me.ReferenceData.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem1, Me.ButtonItem2, Me.EquipmentLocation, Me.POSCounter})
         Me.ReferenceData.Text = "Reference Data"
         '

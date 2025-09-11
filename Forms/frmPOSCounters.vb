@@ -21,10 +21,6 @@
     Private Sub frmPOSCounter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             loadMain()
-            DataGridViewX1.AutoGenerateColumns = False
-            DataGridViewX1.DataSource = bsCounter
-            DataGridViewX1.Columns("Column1").DataPropertyName = "Counter_Id"
-            DataGridViewX1.Columns("Column2").DataPropertyName = "Counter_Name"
 
             DataGridViewX1.Enabled = True
             DataGridViewX1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
@@ -34,14 +30,13 @@
 
             ' Set initial state for editing controls
             tsEdit.Enabled = False
-            tsDelete.Enabled = False
             tsSave.Enabled = False
             CountersTextBox.Enabled = False
 
             ' Set ToolTips for the ToolStrip buttons
             tsNew.ToolTipText = "Add a new counter"
             tsEdit.ToolTipText = "Edit the selected counter"
-            tsDelete.ToolTipText = "Delete the selected counter"
+            tsPrint.ToolTipText = "Print"
             tsSave.ToolTipText = "Save changes"
             tsClose.ToolTipText = "Close this form"
         Catch ex As Exception
@@ -53,16 +48,14 @@
     Private Sub DataGridViewX1_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridViewX1.SelectionChanged
         If DataGridViewX1.SelectedRows.Count > 0 Then
             ' If a row is selected, populate the textbox and enable the Edit button
-            CountersTextBox.Text = DataGridViewX1.SelectedRows(0).Cells("Column2").Value.ToString()
+            CountersTextBox.Text = DataGridViewX1.SelectedRows(0).Cells("Counter_Name").Value.ToString()
             tsEdit.Enabled = True
-            tsDelete.Enabled = True
             tsSave.Enabled = False
             CountersTextBox.Enabled = False
         Else
             ' If no row is selected, clear the textbox and disable buttons
             CountersTextBox.Text = ""
             tsEdit.Enabled = False
-            tsDelete.Enabled = False
             tsSave.Enabled = False
             CountersTextBox.Enabled = False
         End If
@@ -77,7 +70,6 @@
         isNew = False
         tsSave.Enabled = False
         tsEdit.Enabled = False
-        tsDelete.Enabled = False
         tsNew.Enabled = True
 
         ' Make textbox read-only again
@@ -168,43 +160,6 @@
 
         isNew = False
     End Sub
-
-    Private Sub tsDelete_Click(sender As Object, e As EventArgs) Handles tsDelete.Click
-        If DataGridViewX1.SelectedRows.Count > 0 Then
-            ' Get the ID and name from the selected row
-            Dim counterId As String = DataGridViewX1.SelectedRows(0).Cells("Column1").Value.ToString()
-            Dim counterName As String = DataGridViewX1.SelectedRows(0).Cells("Column2").Value.ToString()
-
-            ' Confirm with the user before deleting
-            Dim result = MessageBox.Show($"Are you sure you want to delete the counter '{counterName}'?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-
-            If result = DialogResult.Yes Then
-                Try
-                    ' Create parameters for the Delete stored procedure
-                    Dim sqlParams As New List(Of System.Data.SqlClient.SqlParameter)
-                    sqlParams.Add(New System.Data.SqlClient.SqlParameter("@CounterId", counterId))
-
-                    ' Call the data access function to execute the delete
-                    If da.ExcuteSQLQuery(dbName, "DeletePOSCounter", sqlParams) Then
-                        MessageBox.Show("Counter deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        loadMain() ' Refresh the grid
-                    Else
-                        MessageBox.Show("Failed to delete counter.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-                Catch ex As Exception
-                    MessageBox.Show("An error occurred:" & vbCrLf & ex.ToString(), "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End Try
-            End If
-        End If
-    End Sub
-
-    '
-    'Change later
-    'Private Sub bsCounter_CurrentChanged(sender As Object, e As EventArgs) Handles bsCounter.CurrentChanged
-    '    If bsCounter.Count > 0 Then
-    '        CountersTextBox.Text = bsCounter.Current("Counter_Name")
-    '    End If
-    'End Sub
 
 
 End Class

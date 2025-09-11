@@ -37,14 +37,13 @@ Partial Class frmChangeLocation
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridViewX1 = New DevComponents.DotNetBar.Controls.DataGridViewX()
         Me.cbFromLocation = New System.Windows.Forms.ComboBox()
-        Me.cbToLocation = New System.Windows.Forms.ComboBox()
-        Me.txtEquipmentId = New System.Windows.Forms.TextBox()
-        Me.findBtnChangeLoc = New System.Windows.Forms.Button()
+        Me.txtITEquipmentSearch = New System.Windows.Forms.TextBox()
+        Me.btnSearchITEquipment = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.ITEquipment = New System.Windows.Forms.Label()
         Me.txtChangeLocation = New System.Windows.Forms.TextBox()
         Me.SearchLabel = New System.Windows.Forms.Label()
+        Me.cbToLocation = New System.Windows.Forms.ComboBox()
         Me.Change_Location_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PurchaseOrder_Date = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -121,7 +120,7 @@ Partial Class frmChangeLocation
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(349, 15)
+        Me.Label1.Location = New System.Drawing.Point(609, 19)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(0, 19)
         Me.Label1.TabIndex = 40
@@ -158,42 +157,32 @@ Partial Class frmChangeLocation
         Me.cbFromLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbFromLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbFromLocation.FormattingEnabled = True
-        Me.cbFromLocation.Location = New System.Drawing.Point(169, 50)
+        Me.cbFromLocation.Location = New System.Drawing.Point(429, 54)
         Me.cbFromLocation.Name = "cbFromLocation"
         Me.cbFromLocation.Size = New System.Drawing.Size(147, 21)
         Me.cbFromLocation.TabIndex = 42
         '
-        'cbToLocation
+        'txtITEquipmentSearch
         '
-        Me.cbToLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbToLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cbToLocation.FormattingEnabled = True
-        Me.cbToLocation.Location = New System.Drawing.Point(332, 50)
-        Me.cbToLocation.Name = "cbToLocation"
-        Me.cbToLocation.Size = New System.Drawing.Size(146, 21)
-        Me.cbToLocation.TabIndex = 43
+        Me.txtITEquipmentSearch.Location = New System.Drawing.Point(89, 52)
+        Me.txtITEquipmentSearch.Name = "txtITEquipmentSearch"
+        Me.txtITEquipmentSearch.Size = New System.Drawing.Size(146, 20)
+        Me.txtITEquipmentSearch.TabIndex = 44
         '
-        'txtEquipmentId
+        'btnSearchITEquipment
         '
-        Me.txtEquipmentId.Location = New System.Drawing.Point(515, 51)
-        Me.txtEquipmentId.Name = "txtEquipmentId"
-        Me.txtEquipmentId.Size = New System.Drawing.Size(146, 20)
-        Me.txtEquipmentId.TabIndex = 44
-        '
-        'findBtnChangeLoc
-        '
-        Me.findBtnChangeLoc.Location = New System.Drawing.Point(667, 50)
-        Me.findBtnChangeLoc.Name = "findBtnChangeLoc"
-        Me.findBtnChangeLoc.Size = New System.Drawing.Size(75, 24)
-        Me.findBtnChangeLoc.TabIndex = 45
-        Me.findBtnChangeLoc.Text = "Find"
-        Me.findBtnChangeLoc.UseVisualStyleBackColor = True
+        Me.btnSearchITEquipment.Location = New System.Drawing.Point(12, 50)
+        Me.btnSearchITEquipment.Name = "btnSearchITEquipment"
+        Me.btnSearchITEquipment.Size = New System.Drawing.Size(75, 24)
+        Me.btnSearchITEquipment.TabIndex = 45
+        Me.btnSearchITEquipment.Text = "Search"
+        Me.btnSearchITEquipment.UseVisualStyleBackColor = True
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(165, 24)
+        Me.Label2.Location = New System.Drawing.Point(425, 28)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(104, 19)
         Me.Label2.TabIndex = 46
@@ -203,26 +192,16 @@ Partial Class frmChangeLocation
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(330, 24)
+        Me.Label3.Location = New System.Drawing.Point(590, 28)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(87, 19)
         Me.Label3.TabIndex = 47
         Me.Label3.Text = "To Location:"
         '
-        'ITEquipment
-        '
-        Me.ITEquipment.AutoSize = True
-        Me.ITEquipment.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ITEquipment.Location = New System.Drawing.Point(511, 24)
-        Me.ITEquipment.Name = "ITEquipment"
-        Me.ITEquipment.Size = New System.Drawing.Size(98, 19)
-        Me.ITEquipment.TabIndex = 48
-        Me.ITEquipment.Text = "IT Equipment:"
-        '
         'txtChangeLocation
         '
         Me.txtChangeLocation.Enabled = False
-        Me.txtChangeLocation.Location = New System.Drawing.Point(12, 51)
+        Me.txtChangeLocation.Location = New System.Drawing.Point(272, 55)
         Me.txtChangeLocation.Name = "txtChangeLocation"
         Me.txtChangeLocation.Size = New System.Drawing.Size(137, 20)
         Me.txtChangeLocation.TabIndex = 38
@@ -231,11 +210,21 @@ Partial Class frmChangeLocation
         '
         Me.SearchLabel.AutoSize = True
         Me.SearchLabel.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SearchLabel.Location = New System.Drawing.Point(12, 24)
+        Me.SearchLabel.Location = New System.Drawing.Point(272, 28)
         Me.SearchLabel.Name = "SearchLabel"
         Me.SearchLabel.Size = New System.Drawing.Size(137, 19)
         Me.SearchLabel.TabIndex = 37
         Me.SearchLabel.Text = "Change Location Id:"
+        '
+        'cbToLocation
+        '
+        Me.cbToLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbToLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbToLocation.FormattingEnabled = True
+        Me.cbToLocation.Location = New System.Drawing.Point(592, 54)
+        Me.cbToLocation.Name = "cbToLocation"
+        Me.cbToLocation.Size = New System.Drawing.Size(146, 21)
+        Me.cbToLocation.TabIndex = 43
         '
         'Change_Location_Id
         '
@@ -268,7 +257,7 @@ Partial Class frmChangeLocation
         'IT_Equipment_Id
         '
         Me.IT_Equipment_Id.DataPropertyName = "IT_Equipment_Id"
-        Me.IT_Equipment_Id.HeaderText = "IT Equipment Id"
+        Me.IT_Equipment_Id.HeaderText = "Control No."
         Me.IT_Equipment_Id.Name = "IT_Equipment_Id"
         Me.IT_Equipment_Id.ReadOnly = True
         '
@@ -277,11 +266,10 @@ Partial Class frmChangeLocation
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(764, 450)
-        Me.Controls.Add(Me.ITEquipment)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.findBtnChangeLoc)
-        Me.Controls.Add(Me.txtEquipmentId)
+        Me.Controls.Add(Me.btnSearchITEquipment)
+        Me.Controls.Add(Me.txtITEquipmentSearch)
         Me.Controls.Add(Me.cbToLocation)
         Me.Controls.Add(Me.cbFromLocation)
         Me.Controls.Add(Me.DataGridViewX1)
@@ -311,17 +299,17 @@ Partial Class frmChangeLocation
     Friend WithEvents Label1 As Label
     Friend WithEvents DataGridViewX1 As DevComponents.DotNetBar.Controls.DataGridViewX
     Friend WithEvents cbFromLocation As ComboBox
-    Friend WithEvents cbToLocation As ComboBox
-    Friend WithEvents txtEquipmentId As TextBox
-    Friend WithEvents findBtnChangeLoc As Button
+    Friend WithEvents txtITEquipmentSearch As TextBox
+    Friend WithEvents btnSearchITEquipment As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents ITEquipment As Label
+    'Friend WithEvents SearchBox As Label
     Friend WithEvents txtChangeLocation As TextBox
     Friend WithEvents SearchLabel As Label
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents cbToLocation As ComboBox
     Friend WithEvents Change_Location_Id As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents PurchaseOrder_Date As DataGridViewTextBoxColumn

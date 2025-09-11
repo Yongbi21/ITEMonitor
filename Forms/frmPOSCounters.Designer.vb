@@ -23,29 +23,29 @@ Partial Class frmPOSCounters
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPOSCounters))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPOSCounters))
         Me.bsCounter = New System.Windows.Forms.BindingSource(Me.components)
         Me.SearchLabel = New System.Windows.Forms.Label()
         Me.SearchBox = New System.Windows.Forms.TextBox()
-        Me.tsNew = New System.Windows.Forms.ToolStripButton()
-        Me.tsEdit = New System.Windows.Forms.ToolStripButton()
-        Me.tsSave = New System.Windows.Forms.ToolStripButton()
-        Me.tsDelete = New System.Windows.Forms.ToolStripButton()
-        Me.tsClose = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Counter_Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Counter_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewX1 = New DevComponents.DotNetBar.Controls.DataGridViewX()
         Me.CountersTextBox = New System.Windows.Forms.TextBox()
-        Me.Counter_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Counter_Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tsNew = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsEdit = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsSave = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsPrint = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.tsClose = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         CType(Me.bsCounter, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'SearchLabel
@@ -65,78 +65,6 @@ Partial Class frmPOSCounters
         Me.SearchBox.Size = New System.Drawing.Size(150, 20)
         Me.SearchBox.TabIndex = 26
         '
-        'tsNew
-        '
-        Me.tsNew.Image = CType(resources.GetObject("tsNew.Image"), System.Drawing.Image)
-        Me.tsNew.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsNew.Name = "tsNew"
-        Me.tsNew.Size = New System.Drawing.Size(51, 22)
-        Me.tsNew.Text = "New"
-        '
-        'tsEdit
-        '
-        Me.tsEdit.Image = CType(resources.GetObject("tsEdit.Image"), System.Drawing.Image)
-        Me.tsEdit.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsEdit.Name = "tsEdit"
-        Me.tsEdit.Size = New System.Drawing.Size(47, 22)
-        Me.tsEdit.Text = "Edit"
-        '
-        'tsSave
-        '
-        Me.tsSave.Enabled = False
-        Me.tsSave.Image = CType(resources.GetObject("tsSave.Image"), System.Drawing.Image)
-        Me.tsSave.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsSave.Name = "tsSave"
-        Me.tsSave.Size = New System.Drawing.Size(51, 22)
-        Me.tsSave.Text = "Save"
-        '
-        'tsDelete
-        '
-        Me.tsDelete.Enabled = False
-        Me.tsDelete.Image = CType(resources.GetObject("tsDelete.Image"), System.Drawing.Image)
-        Me.tsDelete.Name = "tsDelete"
-        Me.tsDelete.Size = New System.Drawing.Size(60, 22)
-        Me.tsDelete.Text = "Delete"
-        '
-        'tsClose
-        '
-        Me.tsClose.Image = CType(resources.GetObject("tsClose.Image"), System.Drawing.Image)
-        Me.tsClose.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsClose.Name = "tsClose"
-        Me.tsClose.Size = New System.Drawing.Size(56, 22)
-        Me.tsClose.Text = "Close"
-        '
-        'ToolStrip1
-        '
-        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsNew, Me.ToolStripSeparator1, Me.tsEdit, Me.ToolStripSeparator2, Me.tsSave, Me.ToolStripSeparator3, Me.tsDelete, Me.ToolStripSeparator4, Me.tsClose})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 354)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(515, 25)
-        Me.ToolStrip1.TabIndex = 27
-        Me.ToolStrip1.Text = "ToolStrip1"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -146,6 +74,20 @@ Partial Class frmPOSCounters
         Me.Label1.Size = New System.Drawing.Size(64, 19)
         Me.Label1.TabIndex = 28
         Me.Label1.Text = "Counter:"
+        '
+        'Counter_Name
+        '
+        Me.Counter_Name.DataPropertyName = "Counter_Name"
+        Me.Counter_Name.HeaderText = "Counter Name"
+        Me.Counter_Name.Name = "Counter_Name"
+        Me.Counter_Name.ReadOnly = True
+        '
+        'Counter_Id
+        '
+        Me.Counter_Id.DataPropertyName = "Counter_Id"
+        Me.Counter_Id.HeaderText = "Counter ID"
+        Me.Counter_Id.Name = "Counter_Id"
+        Me.Counter_Id.ReadOnly = True
         '
         'DataGridViewX1
         '
@@ -182,19 +124,76 @@ Partial Class frmPOSCounters
         Me.CountersTextBox.Size = New System.Drawing.Size(131, 20)
         Me.CountersTextBox.TabIndex = 30
         '
-        'Counter_Id
+        'tsNew
         '
-        Me.Counter_Id.DataPropertyName = "Counter_Id"
-        Me.Counter_Id.HeaderText = "Counter ID"
-        Me.Counter_Id.Name = "Counter_Id"
-        Me.Counter_Id.ReadOnly = True
+        Me.tsNew.Image = CType(resources.GetObject("tsNew.Image"), System.Drawing.Image)
+        Me.tsNew.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsNew.Name = "tsNew"
+        Me.tsNew.Size = New System.Drawing.Size(51, 22)
+        Me.tsNew.Text = "New"
         '
-        'Counter_Name
+        'ToolStripSeparator1
         '
-        Me.Counter_Name.DataPropertyName = "Counter_Name"
-        Me.Counter_Name.HeaderText = "Counter Name"
-        Me.Counter_Name.Name = "Counter_Name"
-        Me.Counter_Name.ReadOnly = True
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'tsEdit
+        '
+        Me.tsEdit.Image = CType(resources.GetObject("tsEdit.Image"), System.Drawing.Image)
+        Me.tsEdit.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsEdit.Name = "tsEdit"
+        Me.tsEdit.Size = New System.Drawing.Size(47, 22)
+        Me.tsEdit.Text = "Edit"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        '
+        'tsSave
+        '
+        Me.tsSave.Enabled = False
+        Me.tsSave.Image = CType(resources.GetObject("tsSave.Image"), System.Drawing.Image)
+        Me.tsSave.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsSave.Name = "tsSave"
+        Me.tsSave.Size = New System.Drawing.Size(51, 22)
+        Me.tsSave.Text = "Save"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
+        '
+        'tsPrint
+        '
+        Me.tsPrint.Image = CType(resources.GetObject("tsPrint.Image"), System.Drawing.Image)
+        Me.tsPrint.Name = "tsPrint"
+        Me.tsPrint.Size = New System.Drawing.Size(52, 22)
+        Me.tsPrint.Text = "Print"
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
+        '
+        'tsClose
+        '
+        Me.tsClose.Image = CType(resources.GetObject("tsClose.Image"), System.Drawing.Image)
+        Me.tsClose.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsClose.Name = "tsClose"
+        Me.tsClose.Size = New System.Drawing.Size(56, 22)
+        Me.tsClose.Text = "Close"
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsNew, Me.ToolStripSeparator1, Me.tsEdit, Me.ToolStripSeparator2, Me.tsSave, Me.ToolStripSeparator3, Me.tsPrint, Me.ToolStripSeparator4, Me.tsClose})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 354)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+        Me.ToolStrip1.Size = New System.Drawing.Size(515, 25)
+        Me.ToolStrip1.TabIndex = 27
+        Me.ToolStrip1.Text = "ToolStrip1"
         '
         'frmPOSCounters
         '
@@ -212,9 +211,9 @@ Partial Class frmPOSCounters
         Me.Name = "frmPOSCounters"
         Me.Text = "POS Counters"
         CType(Me.bsCounter, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
-        CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -222,19 +221,19 @@ Partial Class frmPOSCounters
     Friend WithEvents bsCounter As BindingSource
     Friend WithEvents SearchLabel As Label
     Friend WithEvents SearchBox As TextBox
-    Friend WithEvents tsNew As ToolStripButton
-    Friend WithEvents tsEdit As ToolStripButton
-    Friend WithEvents tsSave As ToolStripButton
-    Friend WithEvents tsDelete As ToolStripButton
-    Friend WithEvents tsClose As ToolStripButton
-    Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents Label1 As Label
+    Friend WithEvents Counter_Name As DataGridViewTextBoxColumn
+    Friend WithEvents Counter_Id As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewX1 As DevComponents.DotNetBar.Controls.DataGridViewX
     Private WithEvents CountersTextBox As TextBox
+    Friend WithEvents tsNew As ToolStripButton
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents tsEdit As ToolStripButton
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents tsSave As ToolStripButton
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents tsPrint As ToolStripButton
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
-    Friend WithEvents Counter_Id As DataGridViewTextBoxColumn
-    Friend WithEvents Counter_Name As DataGridViewTextBoxColumn
+    Friend WithEvents tsClose As ToolStripButton
+    Friend WithEvents ToolStrip1 As ToolStrip
 End Class

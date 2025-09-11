@@ -34,6 +34,7 @@
             ' Tooltips
             tsNew.ToolTipText = "Add a new purchase order"
             tsEdit.ToolTipText = "Edit the selected purchase order"
+            tsPrint.ToolTipText = "Print"
             tsSave.ToolTipText = "Save changes"
             tsClose.ToolTipText = "Close this form"
 

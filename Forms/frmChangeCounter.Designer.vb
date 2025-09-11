@@ -26,11 +26,10 @@ Partial Class frmChangeCounter
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmChangeCounter))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tsCancel = New System.Windows.Forms.ToolStripButton()
-        Me.ITEquipment = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.findBtnChangeCounter = New System.Windows.Forms.Button()
-        Me.txtEquipmentId = New System.Windows.Forms.TextBox()
+        Me.btnSearchITEquipment = New System.Windows.Forms.Button()
+        Me.txtITEquipmentSearch = New System.Windows.Forms.TextBox()
         Me.cbToCounter = New System.Windows.Forms.ComboBox()
         Me.cbFromCounter = New System.Windows.Forms.ComboBox()
         Me.DataGridViewX1 = New DevComponents.DotNetBar.Controls.DataGridViewX()
@@ -63,21 +62,11 @@ Partial Class frmChangeCounter
         Me.tsCancel.Size = New System.Drawing.Size(63, 22)
         Me.tsCancel.Text = "Cancel"
         '
-        'ITEquipment
-        '
-        Me.ITEquipment.AutoSize = True
-        Me.ITEquipment.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ITEquipment.Location = New System.Drawing.Point(521, 26)
-        Me.ITEquipment.Name = "ITEquipment"
-        Me.ITEquipment.Size = New System.Drawing.Size(98, 19)
-        Me.ITEquipment.TabIndex = 60
-        Me.ITEquipment.Text = "IT Equipment:"
-        '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(340, 26)
+        Me.Label3.Location = New System.Drawing.Point(605, 32)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(83, 19)
         Me.Label3.TabIndex = 59
@@ -87,34 +76,34 @@ Partial Class frmChangeCounter
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(175, 26)
+        Me.Label2.Location = New System.Drawing.Point(438, 31)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(100, 19)
         Me.Label2.TabIndex = 58
         Me.Label2.Text = "From Counter:"
         '
-        'findBtnChangeCounter
+        'btnSearchITEquipment
         '
-        Me.findBtnChangeCounter.Location = New System.Drawing.Point(677, 52)
-        Me.findBtnChangeCounter.Name = "findBtnChangeCounter"
-        Me.findBtnChangeCounter.Size = New System.Drawing.Size(75, 24)
-        Me.findBtnChangeCounter.TabIndex = 57
-        Me.findBtnChangeCounter.Text = "Find"
-        Me.findBtnChangeCounter.UseVisualStyleBackColor = True
+        Me.btnSearchITEquipment.Location = New System.Drawing.Point(28, 52)
+        Me.btnSearchITEquipment.Name = "btnSearchITEquipment"
+        Me.btnSearchITEquipment.Size = New System.Drawing.Size(75, 24)
+        Me.btnSearchITEquipment.TabIndex = 57
+        Me.btnSearchITEquipment.Text = "Search"
+        Me.btnSearchITEquipment.UseVisualStyleBackColor = True
         '
-        'txtEquipmentId
+        'txtITEquipmentSearch
         '
-        Me.txtEquipmentId.Location = New System.Drawing.Point(525, 53)
-        Me.txtEquipmentId.Name = "txtEquipmentId"
-        Me.txtEquipmentId.Size = New System.Drawing.Size(146, 20)
-        Me.txtEquipmentId.TabIndex = 56
+        Me.txtITEquipmentSearch.Location = New System.Drawing.Point(106, 54)
+        Me.txtITEquipmentSearch.Name = "txtITEquipmentSearch"
+        Me.txtITEquipmentSearch.Size = New System.Drawing.Size(146, 20)
+        Me.txtITEquipmentSearch.TabIndex = 56
         '
         'cbToCounter
         '
         Me.cbToCounter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbToCounter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbToCounter.FormattingEnabled = True
-        Me.cbToCounter.Location = New System.Drawing.Point(342, 52)
+        Me.cbToCounter.Location = New System.Drawing.Point(606, 55)
         Me.cbToCounter.Name = "cbToCounter"
         Me.cbToCounter.Size = New System.Drawing.Size(146, 21)
         Me.cbToCounter.TabIndex = 55
@@ -124,7 +113,7 @@ Partial Class frmChangeCounter
         Me.cbFromCounter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbFromCounter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbFromCounter.FormattingEnabled = True
-        Me.cbFromCounter.Location = New System.Drawing.Point(179, 52)
+        Me.cbFromCounter.Location = New System.Drawing.Point(440, 55)
         Me.cbFromCounter.Name = "cbFromCounter"
         Me.cbFromCounter.Size = New System.Drawing.Size(147, 21)
         Me.cbFromCounter.TabIndex = 54
@@ -224,7 +213,7 @@ Partial Class frmChangeCounter
         '
         Me.SearchLabel.AutoSize = True
         Me.SearchLabel.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SearchLabel.Location = New System.Drawing.Point(22, 26)
+        Me.SearchLabel.Location = New System.Drawing.Point(268, 30)
         Me.SearchLabel.Name = "SearchLabel"
         Me.SearchLabel.Size = New System.Drawing.Size(133, 19)
         Me.SearchLabel.TabIndex = 49
@@ -233,7 +222,7 @@ Partial Class frmChangeCounter
         'txtChangeCounter
         '
         Me.txtChangeCounter.Enabled = False
-        Me.txtChangeCounter.Location = New System.Drawing.Point(22, 53)
+        Me.txtChangeCounter.Location = New System.Drawing.Point(270, 54)
         Me.txtChangeCounter.Name = "txtChangeCounter"
         Me.txtChangeCounter.Size = New System.Drawing.Size(137, 20)
         Me.txtChangeCounter.TabIndex = 50
@@ -269,7 +258,7 @@ Partial Class frmChangeCounter
         'IT_Equipment_Id
         '
         Me.IT_Equipment_Id.DataPropertyName = "IT_Equipment_Id"
-        Me.IT_Equipment_Id.HeaderText = "IT Equipment Id"
+        Me.IT_Equipment_Id.HeaderText = "Control No."
         Me.IT_Equipment_Id.Name = "IT_Equipment_Id"
         Me.IT_Equipment_Id.ReadOnly = True
         '
@@ -278,11 +267,10 @@ Partial Class frmChangeCounter
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.ITEquipment)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.findBtnChangeCounter)
-        Me.Controls.Add(Me.txtEquipmentId)
+        Me.Controls.Add(Me.btnSearchITEquipment)
+        Me.Controls.Add(Me.txtITEquipmentSearch)
         Me.Controls.Add(Me.cbToCounter)
         Me.Controls.Add(Me.cbFromCounter)
         Me.Controls.Add(Me.DataGridViewX1)
@@ -304,11 +292,10 @@ Partial Class frmChangeCounter
     End Sub
 
     Friend WithEvents tsCancel As ToolStripButton
-    Friend WithEvents ITEquipment As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents findBtnChangeCounter As Button
-    Friend WithEvents txtEquipmentId As TextBox
+    Friend WithEvents btnSearchITEquipment As Button
+    Friend WithEvents txtITEquipmentSearch As TextBox
     Friend WithEvents cbToCounter As ComboBox
     Friend WithEvents cbFromCounter As ComboBox
     Friend WithEvents DataGridViewX1 As DevComponents.DotNetBar.Controls.DataGridViewX
