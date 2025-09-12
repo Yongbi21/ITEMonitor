@@ -744,13 +744,13 @@ Partial Class frmEquipment
         'tsPrintSticker
         '
         Me.tsPrintSticker.Name = "tsPrintSticker"
-        Me.tsPrintSticker.Size = New System.Drawing.Size(137, 22)
+        Me.tsPrintSticker.Size = New System.Drawing.Size(180, 22)
         Me.tsPrintSticker.Text = "Print Sticker"
         '
         'tsPrintList
         '
         Me.tsPrintList.Name = "tsPrintList"
-        Me.tsPrintList.Size = New System.Drawing.Size(137, 22)
+        Me.tsPrintList.Size = New System.Drawing.Size(180, 22)
         Me.tsPrintList.Text = "Print List"
         '
         'ToolStripSeparator4

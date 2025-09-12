@@ -597,4 +597,43 @@ Public Class frmEquipment
 
         End With
     End Sub
+
+    Private Sub tsPrintSticker_Click(sender As Object, e As EventArgs) Handles tsPrintSticker.Click
+        dsrpt.Tables("PrintSticker").Clear()
+        dsrpt.Tables("PrintSticker").AcceptChanges()
+        t = dsrpt.Tables("PrintSticker")
+        Dim count As Integer = 0
+
+
+        With bsEquipment
+            If .Count <= 0 Then
+                Return
+            End If
+
+            .MoveFirst()
+
+            For i As Integer = 0 To .Count - 1
+
+                If count = 4 Then
+                    count = 0
+                    t.Rows.Add(r)
+                End If
+
+                count += 1
+                If count = 1 Then
+                    r = t.NewRow
+                End If
+                r("Unit" & count) = "Unit " & count
+
+                .MoveNext()
+            Next
+
+            m_report = New stickerReport
+            m_report.SetDataSource(dsrpt)
+            viewRPT()
+            .MoveNext()
+
+
+        End With
+    End Sub
 End Class

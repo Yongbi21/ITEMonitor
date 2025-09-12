@@ -57,6 +57,20 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="PrintSticker" msprop:Generator_TableClassName="PrintStickerDataTable" msprop:Generator_TableVarName="tablePrintSticker" msprop:Generator_TablePropName="PrintSticker" msprop:Generator_RowDeletingName="PrintStickerRowDeleting" msprop:Generator_RowChangingName="PrintStickerRowChanging" msprop:Generator_RowEvHandlerName="PrintStickerRowChangeEventHandler" msprop:Generator_RowDeletedName="PrintStickerRowDeleted" msprop:Generator_UserTableName="PrintSticker" msprop:Generator_RowChangedName="PrintStickerRowChanged" msprop:Generator_RowEvArgName="PrintStickerRowChangeEvent" msprop:Generator_RowClassName="PrintStickerRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Unit1" msprop:Generator_ColumnVarNameInTable="columnUnit1" msprop:Generator_ColumnPropNameInRow="Unit1" msprop:Generator_ColumnPropNameInTable="Unit1Column" msprop:Generator_UserColumnName="Unit1" type="xs:string" minOccurs="0" />
+              <xs:element name="Unit2" msprop:Generator_ColumnVarNameInTable="columnUnit2" msprop:Generator_ColumnPropNameInRow="Unit2" msprop:Generator_ColumnPropNameInTable="Unit2Column" msprop:Generator_UserColumnName="Unit2" type="xs:string" minOccurs="0" />
+              <xs:element name="Unit3" msprop:Generator_ColumnVarNameInTable="columnUnit3" msprop:Generator_ColumnPropNameInRow="Unit3" msprop:Generator_ColumnPropNameInTable="Unit3Column" msprop:Generator_UserColumnName="Unit3" type="xs:string" minOccurs="0" />
+              <xs:element name="Unit4" msprop:Generator_ColumnVarNameInTable="columnUnit4" msprop:Generator_ColumnPropNameInRow="Unit4" msprop:Generator_ColumnPropNameInTable="Unit4Column" msprop:Generator_UserColumnName="Unit4" type="xs:string" minOccurs="0" />
+              <xs:element name="CTRL_x0020_NO_x0020_1" msprop:Generator_ColumnVarNameInTable="columnCTRL_NO_1" msprop:Generator_ColumnPropNameInRow="CTRL_NO_1" msprop:Generator_ColumnPropNameInTable="CTRL_NO_1Column" msprop:Generator_UserColumnName="CTRL NO 1" type="xs:string" minOccurs="0" />
+              <xs:element name="CTRL_x0020_NO_x0020_2" msprop:Generator_ColumnVarNameInTable="columnCTRL_NO_2" msprop:Generator_ColumnPropNameInRow="CTRL_NO_2" msprop:Generator_ColumnPropNameInTable="CTRL_NO_2Column" msprop:Generator_UserColumnName="CTRL NO 2" type="xs:string" minOccurs="0" />
+              <xs:element name="CTRL_x0020_NO_x0020_3" msprop:Generator_ColumnVarNameInTable="columnCTRL_NO_3" msprop:Generator_ColumnPropNameInRow="CTRL_NO_3" msprop:Generator_ColumnPropNameInTable="CTRL_NO_3Column" msprop:Generator_UserColumnName="CTRL NO 3" type="xs:string" minOccurs="0" />
+              <xs:element name="CTRL_x0020_NO_x0020_4" msprop:Generator_ColumnVarNameInTable="columnCTRL_NO_4" msprop:Generator_ColumnPropNameInRow="CTRL_NO_4" msprop:Generator_ColumnPropNameInTable="CTRL_NO_4Column" msprop:Generator_UserColumnName="CTRL NO 4" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>
