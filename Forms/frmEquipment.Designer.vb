@@ -23,16 +23,20 @@ Partial Class frmEquipment
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmEquipment))
         Me.TabControl2 = New DevComponents.DotNetBar.TabControl()
+        Me.TabControlPanel1 = New DevComponents.DotNetBar.TabControlPanel()
+        Me.equipmentGridView = New DevComponents.DotNetBar.Controls.DataGridViewX()
+        Me.bsEquipment = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TabItem1Main = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.TabControlPanel2 = New DevComponents.DotNetBar.TabControlPanel()
         Me.DataGridViewX2 = New DevComponents.DotNetBar.Controls.DataGridViewX()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.From_Counter_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.To_Counter_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.bsChangeCounter = New System.Windows.Forms.BindingSource(Me.components)
@@ -73,18 +77,6 @@ Partial Class frmEquipment
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TabItem2Details = New DevComponents.DotNetBar.TabItem(Me.components)
-        Me.TabControlPanel1 = New DevComponents.DotNetBar.TabControlPanel()
-        Me.equipmentGridView = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.IT_Equipment_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Machine_Serial_Number = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Store = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.isRegister_Bir = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Type_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Counter_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Location_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Created_Date = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.bsEquipment = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TabItem1Main = New DevComponents.DotNetBar.TabItem(Me.components)
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.tsNew = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -92,20 +84,31 @@ Partial Class frmEquipment
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsSave = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.tsPrint = New System.Windows.Forms.ToolStripButton()
+        Me.tsPrint = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.tsPrintSticker = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsPrintList = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.tsClose = New System.Windows.Forms.ToolStripButton()
+        Me.IT_Equipment_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Machine_Serial_Number = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.isRegister_Bir = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Type_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Equipment_Area_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Counter_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Location_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Purchase_Order_Date = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Created_Date = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.TabControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl2.SuspendLayout()
+        Me.TabControlPanel1.SuspendLayout()
+        CType(Me.equipmentGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.bsEquipment, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControlPanel2.SuspendLayout()
         CType(Me.DataGridViewX2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsChangeCounter, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsChangeLocation, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
-        Me.TabControlPanel1.SuspendLayout()
-        CType(Me.equipmentGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.bsEquipment, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -113,8 +116,8 @@ Partial Class frmEquipment
         '
         Me.TabControl2.CanReorderTabs = True
         Me.TabControl2.ColorScheme.TabBackground = System.Drawing.Color.White
-        Me.TabControl2.Controls.Add(Me.TabControlPanel2)
         Me.TabControl2.Controls.Add(Me.TabControlPanel1)
+        Me.TabControl2.Controls.Add(Me.TabControlPanel2)
         Me.TabControl2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl2.FixedTabSize = New System.Drawing.Size(590, 30)
         Me.TabControl2.Location = New System.Drawing.Point(0, 0)
@@ -127,6 +130,60 @@ Partial Class frmEquipment
         Me.TabControl2.Tabs.Add(Me.TabItem1Main)
         Me.TabControl2.Tabs.Add(Me.TabItem2Details)
         Me.TabControl2.Text = "TabControl2"
+        '
+        'TabControlPanel1
+        '
+        Me.TabControlPanel1.Controls.Add(Me.equipmentGridView)
+        Me.TabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TabControlPanel1.Location = New System.Drawing.Point(0, 36)
+        Me.TabControlPanel1.Name = "TabControlPanel1"
+        Me.TabControlPanel1.Padding = New System.Windows.Forms.Padding(1)
+        Me.TabControlPanel1.Size = New System.Drawing.Size(1260, 524)
+        Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(142, Byte), Integer), CType(CType(179, Byte), Integer), CType(CType(231, Byte), Integer))
+        Me.TabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(237, Byte), Integer), CType(CType(254, Byte), Integer))
+        Me.TabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+        Me.TabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(59, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(156, Byte), Integer))
+        Me.TabControlPanel1.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+        Me.TabControlPanel1.Style.GradientAngle = 90
+        Me.TabControlPanel1.TabIndex = 2
+        Me.TabControlPanel1.TabItem = Me.TabItem1Main
+        '
+        'equipmentGridView
+        '
+        Me.equipmentGridView.AllowUserToAddRows = False
+        Me.equipmentGridView.AllowUserToDeleteRows = False
+        Me.equipmentGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.equipmentGridView.AutoGenerateColumns = False
+        Me.equipmentGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.equipmentGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IT_Equipment_Id, Me.Machine_Serial_Number, Me.isRegister_Bir, Me.Type_Id, Me.Equipment_Area_Id, Me.Counter_Id, Me.Location_Id, Me.Purchase_Order_Date, Me.Created_Date})
+        Me.equipmentGridView.DataSource = Me.bsEquipment
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.equipmentGridView.DefaultCellStyle = DataGridViewCellStyle1
+        Me.equipmentGridView.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.equipmentGridView.Location = New System.Drawing.Point(12, 29)
+        Me.equipmentGridView.Name = "equipmentGridView"
+        Me.equipmentGridView.ReadOnly = True
+        Me.equipmentGridView.RowHeadersVisible = False
+        Me.equipmentGridView.Size = New System.Drawing.Size(1226, 480)
+        Me.equipmentGridView.TabIndex = 36
+        '
+        'bsEquipment
+        '
+        '
+        'TabItem1Main
+        '
+        Me.TabItem1Main.AttachedControl = Me.TabControlPanel1
+        Me.TabItem1Main.Name = "TabItem1Main"
+        Me.TabItem1Main.Text = "Main"
         '
         'TabControlPanel2
         '
@@ -157,16 +214,16 @@ Partial Class frmEquipment
         Me.DataGridViewX2.AllowUserToDeleteRows = False
         Me.DataGridViewX2.AutoGenerateColumns = False
         Me.DataGridViewX2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridViewX2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5})
+        Me.DataGridViewX2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.From_Counter_Id, Me.To_Counter_Id, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5})
         Me.DataGridViewX2.DataSource = Me.bsChangeCounter
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewX2.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewX2.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridViewX2.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.DataGridViewX2.Location = New System.Drawing.Point(621, 315)
         Me.DataGridViewX2.Name = "DataGridViewX2"
@@ -182,19 +239,19 @@ Partial Class frmEquipment
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
         '
-        'DataGridViewTextBoxColumn2
+        'From_Counter_Id
         '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "From_Counter_Id"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "From Counter"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.From_Counter_Id.DataPropertyName = "From_Counter_Id"
+        Me.From_Counter_Id.HeaderText = "From Counter"
+        Me.From_Counter_Id.Name = "From_Counter_Id"
+        Me.From_Counter_Id.ReadOnly = True
         '
-        'DataGridViewTextBoxColumn3
+        'To_Counter_Id
         '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "To_Counter_Id"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "To Counter"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.To_Counter_Id.DataPropertyName = "To_Counter_Id"
+        Me.To_Counter_Id.HeaderText = "To Counter"
+        Me.To_Counter_Id.Name = "To_Counter_Id"
+        Me.To_Counter_Id.ReadOnly = True
         '
         'DataGridViewTextBoxColumn4
         '
@@ -218,14 +275,14 @@ Partial Class frmEquipment
         Me.DataGridViewX1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewX1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Change_Location_Id, Me.From_Location_Id, Me.To_Location_Id, Me.Actual_CL_Datetime, Me.IT_Equipment_Id_Change_Location})
         Me.DataGridViewX1.DataSource = Me.bsChangeLocation
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewX1.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewX1.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridViewX1.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.DataGridViewX1.Location = New System.Drawing.Point(12, 315)
         Me.DataGridViewX1.Name = "DataGridViewX1"
@@ -627,117 +684,6 @@ Partial Class frmEquipment
         Me.TabItem2Details.Name = "TabItem2Details"
         Me.TabItem2Details.Text = "Details"
         '
-        'TabControlPanel1
-        '
-        Me.TabControlPanel1.Controls.Add(Me.equipmentGridView)
-        Me.TabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TabControlPanel1.Location = New System.Drawing.Point(0, 36)
-        Me.TabControlPanel1.Name = "TabControlPanel1"
-        Me.TabControlPanel1.Padding = New System.Windows.Forms.Padding(1)
-        Me.TabControlPanel1.Size = New System.Drawing.Size(1260, 524)
-        Me.TabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(142, Byte), Integer), CType(CType(179, Byte), Integer), CType(CType(231, Byte), Integer))
-        Me.TabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(223, Byte), Integer), CType(CType(237, Byte), Integer), CType(CType(254, Byte), Integer))
-        Me.TabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.TabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(59, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(156, Byte), Integer))
-        Me.TabControlPanel1.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-        Me.TabControlPanel1.Style.GradientAngle = 90
-        Me.TabControlPanel1.TabIndex = 2
-        Me.TabControlPanel1.TabItem = Me.TabItem1Main
-        '
-        'equipmentGridView
-        '
-        Me.equipmentGridView.AllowUserToAddRows = False
-        Me.equipmentGridView.AllowUserToDeleteRows = False
-        Me.equipmentGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.equipmentGridView.AutoGenerateColumns = False
-        Me.equipmentGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.equipmentGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IT_Equipment_Id, Me.Machine_Serial_Number, Me.Store, Me.isRegister_Bir, Me.Type_Id, Me.Counter_Id, Me.Location_Id, Me.Created_Date})
-        Me.equipmentGridView.DataSource = Me.bsEquipment
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.equipmentGridView.DefaultCellStyle = DataGridViewCellStyle6
-        Me.equipmentGridView.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.equipmentGridView.Location = New System.Drawing.Point(12, 19)
-        Me.equipmentGridView.Name = "equipmentGridView"
-        Me.equipmentGridView.ReadOnly = True
-        Me.equipmentGridView.RowHeadersVisible = False
-        Me.equipmentGridView.Size = New System.Drawing.Size(1226, 488)
-        Me.equipmentGridView.TabIndex = 36
-        '
-        'IT_Equipment_Id
-        '
-        Me.IT_Equipment_Id.DataPropertyName = "IT_Equipment_Id"
-        Me.IT_Equipment_Id.HeaderText = "Control No."
-        Me.IT_Equipment_Id.Name = "IT_Equipment_Id"
-        Me.IT_Equipment_Id.ReadOnly = True
-        '
-        'Machine_Serial_Number
-        '
-        Me.Machine_Serial_Number.DataPropertyName = "Machine_Serial_Number"
-        Me.Machine_Serial_Number.HeaderText = "Machine Serial No."
-        Me.Machine_Serial_Number.Name = "Machine_Serial_Number"
-        Me.Machine_Serial_Number.ReadOnly = True
-        '
-        'Store
-        '
-        Me.Store.DataPropertyName = "Store"
-        Me.Store.HeaderText = "Store"
-        Me.Store.Name = "Store"
-        Me.Store.ReadOnly = True
-        '
-        'isRegister_Bir
-        '
-        Me.isRegister_Bir.DataPropertyName = "isRegister_Bir"
-        Me.isRegister_Bir.HeaderText = "BIR Registered"
-        Me.isRegister_Bir.Name = "isRegister_Bir"
-        Me.isRegister_Bir.ReadOnly = True
-        '
-        'Type_Id
-        '
-        Me.Type_Id.DataPropertyName = "Type_Name"
-        Me.Type_Id.HeaderText = "Type Name"
-        Me.Type_Id.Name = "Type_Id"
-        Me.Type_Id.ReadOnly = True
-        Me.Type_Id.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        '
-        'Counter_Id
-        '
-        Me.Counter_Id.DataPropertyName = "Counter_Name"
-        Me.Counter_Id.HeaderText = "Counter Name"
-        Me.Counter_Id.Name = "Counter_Id"
-        Me.Counter_Id.ReadOnly = True
-        '
-        'Location_Id
-        '
-        Me.Location_Id.DataPropertyName = "Location_Name"
-        Me.Location_Id.HeaderText = "Location Name"
-        Me.Location_Id.Name = "Location_Id"
-        Me.Location_Id.ReadOnly = True
-        '
-        'Created_Date
-        '
-        Me.Created_Date.DataPropertyName = "Created_Date"
-        Me.Created_Date.HeaderText = "Created Date"
-        Me.Created_Date.Name = "Created_Date"
-        Me.Created_Date.ReadOnly = True
-        '
-        'bsEquipment
-        '
-        '
-        'TabItem1Main
-        '
-        Me.TabItem1Main.AttachedControl = Me.TabControlPanel1
-        Me.TabItem1Main.Name = "TabItem1Main"
-        Me.TabItem1Main.Text = "Main"
-        '
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
@@ -788,11 +734,24 @@ Partial Class frmEquipment
         '
         'tsPrint
         '
+        Me.tsPrint.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsPrintSticker, Me.tsPrintList})
         Me.tsPrint.Image = CType(resources.GetObject("tsPrint.Image"), System.Drawing.Image)
         Me.tsPrint.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsPrint.Name = "tsPrint"
-        Me.tsPrint.Size = New System.Drawing.Size(52, 22)
+        Me.tsPrint.Size = New System.Drawing.Size(61, 22)
         Me.tsPrint.Text = "Print"
+        '
+        'tsPrintSticker
+        '
+        Me.tsPrintSticker.Name = "tsPrintSticker"
+        Me.tsPrintSticker.Size = New System.Drawing.Size(137, 22)
+        Me.tsPrintSticker.Text = "Print Sticker"
+        '
+        'tsPrintList
+        '
+        Me.tsPrintList.Name = "tsPrintList"
+        Me.tsPrintList.Size = New System.Drawing.Size(137, 22)
+        Me.tsPrintList.Text = "Print List"
         '
         'ToolStripSeparator4
         '
@@ -806,6 +765,70 @@ Partial Class frmEquipment
         Me.tsClose.Size = New System.Drawing.Size(40, 22)
         Me.tsClose.Text = "Close"
         '
+        'IT_Equipment_Id
+        '
+        Me.IT_Equipment_Id.DataPropertyName = "IT_Equipment_Id"
+        Me.IT_Equipment_Id.HeaderText = "Control No."
+        Me.IT_Equipment_Id.Name = "IT_Equipment_Id"
+        Me.IT_Equipment_Id.ReadOnly = True
+        '
+        'Machine_Serial_Number
+        '
+        Me.Machine_Serial_Number.DataPropertyName = "Machine_Serial_Number"
+        Me.Machine_Serial_Number.HeaderText = "Machine Serial No."
+        Me.Machine_Serial_Number.Name = "Machine_Serial_Number"
+        Me.Machine_Serial_Number.ReadOnly = True
+        '
+        'isRegister_Bir
+        '
+        Me.isRegister_Bir.DataPropertyName = "isRegister_Bir"
+        Me.isRegister_Bir.HeaderText = "BIR Registered"
+        Me.isRegister_Bir.Name = "isRegister_Bir"
+        Me.isRegister_Bir.ReadOnly = True
+        '
+        'Type_Id
+        '
+        Me.Type_Id.DataPropertyName = "Type_Name"
+        Me.Type_Id.HeaderText = "Type Name"
+        Me.Type_Id.Name = "Type_Id"
+        Me.Type_Id.ReadOnly = True
+        Me.Type_Id.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        '
+        'Equipment_Area_Id
+        '
+        Me.Equipment_Area_Id.DataPropertyName = "Area_Name"
+        Me.Equipment_Area_Id.HeaderText = "Area Name"
+        Me.Equipment_Area_Id.Name = "Equipment_Area_Id"
+        Me.Equipment_Area_Id.ReadOnly = True
+        '
+        'Counter_Id
+        '
+        Me.Counter_Id.DataPropertyName = "Counter_Name"
+        Me.Counter_Id.HeaderText = "Counter Name"
+        Me.Counter_Id.Name = "Counter_Id"
+        Me.Counter_Id.ReadOnly = True
+        '
+        'Location_Id
+        '
+        Me.Location_Id.DataPropertyName = "Location_Name"
+        Me.Location_Id.HeaderText = "Location Name"
+        Me.Location_Id.Name = "Location_Id"
+        Me.Location_Id.ReadOnly = True
+        '
+        'Purchase_Order_Date
+        '
+        Me.Purchase_Order_Date.DataPropertyName = "Purchase_Order_Date1"
+        Me.Purchase_Order_Date.HeaderText = "Purchase Order Date"
+        Me.Purchase_Order_Date.Name = "Purchase_Order_Date"
+        Me.Purchase_Order_Date.ReadOnly = True
+        '
+        'Created_Date
+        '
+        Me.Created_Date.DataPropertyName = "Created_Date"
+        Me.Created_Date.HeaderText = "Created Date"
+        Me.Created_Date.Name = "Created_Date"
+        Me.Created_Date.ReadOnly = True
+        '
         'frmEquipment
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -816,9 +839,12 @@ Partial Class frmEquipment
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmEquipment"
-        Me.Text = "frmHome"
+        Me.Text = "Equipment Details"
         CType(Me.TabControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl2.ResumeLayout(False)
+        Me.TabControlPanel1.ResumeLayout(False)
+        CType(Me.equipmentGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.bsEquipment, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControlPanel2.ResumeLayout(False)
         Me.TabControlPanel2.PerformLayout()
         CType(Me.DataGridViewX2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -827,9 +853,6 @@ Partial Class frmEquipment
         CType(Me.bsChangeLocation, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.TabControlPanel1.ResumeLayout(False)
-        CType(Me.equipmentGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.bsEquipment, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -883,14 +906,6 @@ Partial Class frmEquipment
     Friend WithEvents Label2 As Label
     Friend WithEvents cbEquipmentArea As ComboBox
     Friend WithEvents cbEquipmentLocation As ComboBox
-    Friend WithEvents IT_Equipment_Id As DataGridViewTextBoxColumn
-    Friend WithEvents Machine_Serial_Number As DataGridViewTextBoxColumn
-    Friend WithEvents Store As DataGridViewTextBoxColumn
-    Friend WithEvents isRegister_Bir As DataGridViewTextBoxColumn
-    Friend WithEvents Type_Id As DataGridViewTextBoxColumn
-    Friend WithEvents Counter_Id As DataGridViewTextBoxColumn
-    Friend WithEvents Location_Id As DataGridViewTextBoxColumn
-    Friend WithEvents Created_Date As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewX2 As DevComponents.DotNetBar.Controls.DataGridViewX
     Friend WithEvents DataGridViewX1 As DevComponents.DotNetBar.Controls.DataGridViewX
     Friend WithEvents Change_Location_Id As DataGridViewTextBoxColumn
@@ -898,12 +913,23 @@ Partial Class frmEquipment
     Friend WithEvents To_Location_Id As DataGridViewTextBoxColumn
     Friend WithEvents Actual_CL_Datetime As DataGridViewTextBoxColumn
     Friend WithEvents IT_Equipment_Id_Change_Location As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents tsPrint As ToolStripButton
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
     Friend WithEvents findBtnCounter As Button
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents From_Counter_Id As DataGridViewTextBoxColumn
+    Friend WithEvents To_Counter_Id As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents tsPrint As ToolStripDropDownButton
+    Friend WithEvents tsPrintSticker As ToolStripMenuItem
+    Friend WithEvents tsPrintList As ToolStripMenuItem
+    Friend WithEvents IT_Equipment_Id As DataGridViewTextBoxColumn
+    Friend WithEvents Machine_Serial_Number As DataGridViewTextBoxColumn
+    Friend WithEvents isRegister_Bir As DataGridViewTextBoxColumn
+    Friend WithEvents Type_Id As DataGridViewTextBoxColumn
+    Friend WithEvents Equipment_Area_Id As DataGridViewTextBoxColumn
+    Friend WithEvents Counter_Id As DataGridViewTextBoxColumn
+    Friend WithEvents Location_Id As DataGridViewTextBoxColumn
+    Friend WithEvents Purchase_Order_Date As DataGridViewTextBoxColumn
+    Friend WithEvents Created_Date As DataGridViewTextBoxColumn
 End Class

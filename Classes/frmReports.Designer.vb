@@ -44,6 +44,7 @@ Partial Class frmReports
         Me.Controls.Add(Me.reportFormView)
         Me.Name = "frmReports"
         Me.Text = "frmReports"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
 
     End Sub

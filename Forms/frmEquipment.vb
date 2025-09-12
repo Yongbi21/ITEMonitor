@@ -3,6 +3,9 @@ Public Class frmEquipment
 
     Private isNew As Boolean = False
     Private da As New clDataAceesV2("DEVJB\SQLEXPRESS", "SGCuser", "Syst3ms")
+    Private dsrpt As New dsReports
+    Private t As New DataTable
+    Private r As DataRow
 
 #Region "Calling Function"
     Private Sub loadMain()
@@ -195,8 +198,11 @@ Public Class frmEquipment
         cbEquipmentLocation.SelectedIndex = -1
         cbEquipmentArea.SelectedIndex = -1
         txtPurchaseOrder.Clear()
+        txtPurchaseOrder.Tag = Nothing
         txtPermitNo.Clear()
+        txtPermitNo.Tag = Nothing
         txtCounterName.Clear()
+        txtCounterName.Tag = Nothing
 
         ' Enable and make textboxes writable
         Panel1.Enabled = True
@@ -291,6 +297,7 @@ Public Class frmEquipment
                     tsEdit.Enabled = False
                     tsNew.Enabled = True
                     SetFindButtonsVisibility(False)
+                    Panel1.Enabled = False
                 Else
                     MessageBox.Show("Failed to add new equipment.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
@@ -348,6 +355,7 @@ Public Class frmEquipment
                     tsEdit.Enabled = False ' It will be enabled by selection changed
                     tsNew.Enabled = True
                     SetFindButtonsVisibility(False)
+                    Panel1.Enabled = False
                 Else
                     MessageBox.Show("Failed to update equipment. Maybe the record was deleted by another user.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
@@ -405,8 +413,12 @@ Public Class frmEquipment
             cbEquipmentLocation.Text = GetNameFromId("EquipmentLocation", "Location_Id", "Location_Name", locationId)
             cbEquipmentArea.Text = GetNameFromId("EquipmentArea", "Area_Id", "Area_Name", areaId)
             txtPermitNo.Text = GetNameFromId("POSPermitNumber", "Permit_Id", "Permit_Number", permitId)
+            txtPermitNo.Tag = If(permitId Is DBNull.Value, Nothing, permitId)
             txtCounterName.Text = GetNameFromId("POSCounterName", "Counter_Id", "Counter_Name", counterId)
+            txtCounterName.Tag = If(counterId Is DBNull.Value, Nothing, counterId)
             txtPurchaseOrder.Text = GetNameFromId("PurchaseOrder", "Purchase_Order_Id", "Purchase_Order_Number", purchaseOrderId)
+            txtPurchaseOrder.Tag = If(purchaseOrderId Is DBNull.Value, Nothing, purchaseOrderId)
+
 
             ' Populate textboxes with direct values 
             txtControlNo.Text = currentRow("IT_Equipment_Id").ToString()
@@ -428,13 +440,34 @@ Public Class frmEquipment
         Else
             ' Clear all textboxes if no equipment is selected
             txtPermitNo.Clear()
+            txtPermitNo.Tag = Nothing
             txtCounterName.Clear()
+            txtCounterName.Tag = Nothing
             txtPurchaseOrder.Clear()
+            txtPurchaseOrder.Tag = Nothing
             txtControlNo.Clear()
             txtMachineSerialNo.Clear()
             txtStore.Clear()
             cbCounter.SelectedIndex = -1
             cbBir.SelectedIndex = -1
+        End If
+    End Sub
+
+    Private Sub txtCounterName_TextChanged(sender As Object, e As EventArgs) Handles txtCounterName.TextChanged
+        If String.IsNullOrWhiteSpace(txtCounterName.Text) Then
+            txtCounterName.Tag = Nothing
+        End If
+    End Sub
+
+    Private Sub txtPermitNo_TextChanged(sender As Object, e As EventArgs) Handles txtPermitNo.TextChanged
+        If String.IsNullOrWhiteSpace(txtPermitNo.Text) Then
+            txtPermitNo.Tag = Nothing
+        End If
+    End Sub
+
+    Private Sub txtPurchaseOrder_TextChanged(sender As Object, e As EventArgs) Handles txtPurchaseOrder.TextChanged
+        If String.IsNullOrWhiteSpace(txtPurchaseOrder.Text) Then
+            txtPurchaseOrder.Tag = Nothing
         End If
     End Sub
 
@@ -454,6 +487,7 @@ Public Class frmEquipment
     End Sub
 
     Private Sub DataGridViewX1_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataGridViewX1.CellFormatting
+
         Dim dgv As DataGridView = CType(sender, DataGridView)
         ' Check if this is the From_Location_Id or To_Location_Id column and not the header row
         If e.RowIndex >= 0 AndAlso (dgv.Columns(e.ColumnIndex).Name = "From_Location_Id" OrElse dgv.Columns(e.ColumnIndex).Name = "To_Location_Id") Then
@@ -473,7 +507,8 @@ Public Class frmEquipment
         End If
     End Sub
 
-    Private Sub DataGridViewX2_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs)
+    Private Sub DataGridViewX2_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataGridViewX2.CellFormatting
+
         Dim dgv As DataGridView = CType(sender, DataGridView)
         ' Check if this is the From_Counter_Id or To_Counter_Id column and not the header row
         If e.RowIndex >= 0 AndAlso (dgv.Columns(e.ColumnIndex).Name = "From_Counter_Id" OrElse dgv.Columns(e.ColumnIndex).Name = "To_Counter_Id") Then
@@ -527,4 +562,39 @@ Public Class frmEquipment
     End Sub
 
 
+    Private Sub tsPrintList_Click(sender As Object, e As EventArgs) Handles tsPrintList.Click
+        dsrpt.Tables("IT Equipment").Clear()
+        dsrpt.Tables("IT Equipment").AcceptChanges()
+        t = dsrpt.Tables("IT Equipment")
+
+
+
+        With bsEquipment
+            If .Count <= 0 Then
+                Return
+            End If
+
+            .MoveFirst()
+
+            For i As Integer = 0 To .Count - 1
+                r = t.NewRow
+                r("IT_Equipment_Id") = .Current("IT_Equipment_Id")
+                r("Machine_Serial_Number") = .Current("Machine_Serial_Number")
+                r("Type_Name") = .Current("Type_Name")
+                r("Area_Name") = .Current("Area_Name")
+                r("Counter_Name") = .Current("Counter_Name")
+                r("Location_Name") = .Current("Location_Name")
+                r("Purchase_Order_Date") = .Current("Purchase_Order_Date1")
+                t.Rows.Add(r)
+                .MoveNext()
+            Next
+
+            m_report = New equipmentDetailsReport
+            m_report.SetDataSource(dsrpt)
+            viewRPT()
+            .MoveNext()
+
+
+        End With
+    End Sub
 End Class
