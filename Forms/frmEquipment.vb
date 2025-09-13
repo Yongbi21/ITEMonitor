@@ -601,17 +601,27 @@ Public Class frmEquipment
     Private Sub tsPrintSticker_Click(sender As Object, e As EventArgs) Handles tsPrintSticker.Click
         dsrpt.Tables("IT Sticker").Clear()
         t = dsrpt.Tables("IT Sticker")
+        Dim count As Integer = 0
 
         With bsEquipment
             If .Count <= 0 Then Return
             .MoveFirst()
+
             For i As Integer = 0 To .Count - 1
-                r = t.NewRow
-                r("IT_Equipment_Id") = .Current("IT_Equipment_Id")
-                r("Purchase_Order_Date") = .Current("Purchase_Order_Date1")
-                t.Rows.Add(r)
+                If count = 3 Then
+                    count = 0
+                    t.Rows.Add(r)
+                End If
+                count += 1
+                If count = 1 Then r = t.NewRow
+
+                r("IT_Equipment_Id" & count) = .Current("IT_Equipment_Id")
+                r("Purchase_Order_Date" & count) = .Current("Purchase_Order_Date1")
+
                 .MoveNext()
             Next
+
+            If count > 0 Then t.Rows.Add(r)
 
             m_report = New stickerReport
             m_report.SetDataSource(dsrpt)

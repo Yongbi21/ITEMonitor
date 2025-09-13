@@ -2234,9 +2234,17 @@ Partial Public Class dsReports
     Partial Public Class IT_StickerDataTable
         Inherits Global.System.Data.TypedTableBase(Of IT_StickerRow)
         
-        Private columnIT_Equipment_Id As Global.System.Data.DataColumn
+        Private columnIT_Equipment_Id1 As Global.System.Data.DataColumn
         
-        Private columnPurchase_Order_Date As Global.System.Data.DataColumn
+        Private columnIT_Equipment_Id2 As Global.System.Data.DataColumn
+        
+        Private columnIT_Equipment_Id3 As Global.System.Data.DataColumn
+        
+        Private columnPurchase_Order_Date1 As Global.System.Data.DataColumn
+        
+        Private columnPurchase_Order_Date2 As Global.System.Data.DataColumn
+        
+        Private columnPurchase_Order_Date3 As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -2275,17 +2283,49 @@ Partial Public Class dsReports
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property IT_Equipment_IdColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property IT_Equipment_Id1Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnIT_Equipment_Id
+                Return Me.columnIT_Equipment_Id1
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property Purchase_Order_DateColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property IT_Equipment_Id2Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnPurchase_Order_Date
+                Return Me.columnIT_Equipment_Id2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IT_Equipment_Id3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIT_Equipment_Id3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Purchase_Order_Date1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPurchase_Order_Date1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Purchase_Order_Date2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPurchase_Order_Date2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Purchase_Order_Date3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPurchase_Order_Date3
             End Get
         End Property
         
@@ -2326,9 +2366,9 @@ Partial Public Class dsReports
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddIT_StickerRow(ByVal IT_Equipment_Id As String, ByVal Purchase_Order_Date As String) As IT_StickerRow
+        Public Overloads Function AddIT_StickerRow(ByVal IT_Equipment_Id1 As String, ByVal IT_Equipment_Id2 As String, ByVal IT_Equipment_Id3 As String, ByVal Purchase_Order_Date1 As String, ByVal Purchase_Order_Date2 As String, ByVal Purchase_Order_Date3 As String) As IT_StickerRow
             Dim rowIT_StickerRow As IT_StickerRow = CType(Me.NewRow,IT_StickerRow)
-            Dim columnValuesArray() As Object = New Object() {IT_Equipment_Id, Purchase_Order_Date}
+            Dim columnValuesArray() As Object = New Object() {IT_Equipment_Id1, IT_Equipment_Id2, IT_Equipment_Id3, Purchase_Order_Date1, Purchase_Order_Date2, Purchase_Order_Date3}
             rowIT_StickerRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowIT_StickerRow)
             Return rowIT_StickerRow
@@ -2351,17 +2391,29 @@ Partial Public Class dsReports
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnIT_Equipment_Id = MyBase.Columns("IT_Equipment_Id")
-            Me.columnPurchase_Order_Date = MyBase.Columns("Purchase_Order_Date")
+            Me.columnIT_Equipment_Id1 = MyBase.Columns("IT_Equipment_Id1")
+            Me.columnIT_Equipment_Id2 = MyBase.Columns("IT_Equipment_Id2")
+            Me.columnIT_Equipment_Id3 = MyBase.Columns("IT_Equipment_Id3")
+            Me.columnPurchase_Order_Date1 = MyBase.Columns("Purchase_Order_Date1")
+            Me.columnPurchase_Order_Date2 = MyBase.Columns("Purchase_Order_Date2")
+            Me.columnPurchase_Order_Date3 = MyBase.Columns("Purchase_Order_Date3")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnIT_Equipment_Id = New Global.System.Data.DataColumn("IT_Equipment_Id", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnIT_Equipment_Id)
-            Me.columnPurchase_Order_Date = New Global.System.Data.DataColumn("Purchase_Order_Date", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPurchase_Order_Date)
+            Me.columnIT_Equipment_Id1 = New Global.System.Data.DataColumn("IT_Equipment_Id1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIT_Equipment_Id1)
+            Me.columnIT_Equipment_Id2 = New Global.System.Data.DataColumn("IT_Equipment_Id2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIT_Equipment_Id2)
+            Me.columnIT_Equipment_Id3 = New Global.System.Data.DataColumn("IT_Equipment_Id3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIT_Equipment_Id3)
+            Me.columnPurchase_Order_Date1 = New Global.System.Data.DataColumn("Purchase_Order_Date1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPurchase_Order_Date1)
+            Me.columnPurchase_Order_Date2 = New Global.System.Data.DataColumn("Purchase_Order_Date2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPurchase_Order_Date2)
+            Me.columnPurchase_Order_Date3 = New Global.System.Data.DataColumn("Purchase_Order_Date3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPurchase_Order_Date3)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3225,56 +3277,164 @@ Partial Public Class dsReports
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property IT_Equipment_Id() As String
+        Public Property IT_Equipment_Id1() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableIT_Sticker.IT_Equipment_IdColumn),String)
+                    Return CType(Me(Me.tableIT_Sticker.IT_Equipment_Id1Column),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'IT_Equipment_Id' in table 'IT Sticker' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'IT_Equipment_Id1' in table 'IT Sticker' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableIT_Sticker.IT_Equipment_IdColumn) = value
+                Me(Me.tableIT_Sticker.IT_Equipment_Id1Column) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property Purchase_Order_Date() As String
+        Public Property IT_Equipment_Id2() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableIT_Sticker.Purchase_Order_DateColumn),String)
+                    Return CType(Me(Me.tableIT_Sticker.IT_Equipment_Id2Column),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Purchase_Order_Date' in table 'IT Sticker' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'IT_Equipment_Id2' in table 'IT Sticker' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableIT_Sticker.Purchase_Order_DateColumn) = value
+                Me(Me.tableIT_Sticker.IT_Equipment_Id2Column) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsIT_Equipment_IdNull() As Boolean
-            Return Me.IsNull(Me.tableIT_Sticker.IT_Equipment_IdColumn)
+        Public Property IT_Equipment_Id3() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableIT_Sticker.IT_Equipment_Id3Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'IT_Equipment_Id3' in table 'IT Sticker' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableIT_Sticker.IT_Equipment_Id3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Purchase_Order_Date1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableIT_Sticker.Purchase_Order_Date1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Purchase_Order_Date1' in table 'IT Sticker' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableIT_Sticker.Purchase_Order_Date1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Purchase_Order_Date2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableIT_Sticker.Purchase_Order_Date2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Purchase_Order_Date2' in table 'IT Sticker' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableIT_Sticker.Purchase_Order_Date2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Purchase_Order_Date3() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableIT_Sticker.Purchase_Order_Date3Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Purchase_Order_Date3' in table 'IT Sticker' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableIT_Sticker.Purchase_Order_Date3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIT_Equipment_Id1Null() As Boolean
+            Return Me.IsNull(Me.tableIT_Sticker.IT_Equipment_Id1Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetIT_Equipment_IdNull()
-            Me(Me.tableIT_Sticker.IT_Equipment_IdColumn) = Global.System.Convert.DBNull
+        Public Sub SetIT_Equipment_Id1Null()
+            Me(Me.tableIT_Sticker.IT_Equipment_Id1Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsPurchase_Order_DateNull() As Boolean
-            Return Me.IsNull(Me.tableIT_Sticker.Purchase_Order_DateColumn)
+        Public Function IsIT_Equipment_Id2Null() As Boolean
+            Return Me.IsNull(Me.tableIT_Sticker.IT_Equipment_Id2Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetPurchase_Order_DateNull()
-            Me(Me.tableIT_Sticker.Purchase_Order_DateColumn) = Global.System.Convert.DBNull
+        Public Sub SetIT_Equipment_Id2Null()
+            Me(Me.tableIT_Sticker.IT_Equipment_Id2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIT_Equipment_Id3Null() As Boolean
+            Return Me.IsNull(Me.tableIT_Sticker.IT_Equipment_Id3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIT_Equipment_Id3Null()
+            Me(Me.tableIT_Sticker.IT_Equipment_Id3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsPurchase_Order_Date1Null() As Boolean
+            Return Me.IsNull(Me.tableIT_Sticker.Purchase_Order_Date1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetPurchase_Order_Date1Null()
+            Me(Me.tableIT_Sticker.Purchase_Order_Date1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsPurchase_Order_Date2Null() As Boolean
+            Return Me.IsNull(Me.tableIT_Sticker.Purchase_Order_Date2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetPurchase_Order_Date2Null()
+            Me(Me.tableIT_Sticker.Purchase_Order_Date2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsPurchase_Order_Date3Null() As Boolean
+            Return Me.IsNull(Me.tableIT_Sticker.Purchase_Order_Date3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetPurchase_Order_Date3Null()
+            Me(Me.tableIT_Sticker.Purchase_Order_Date3Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     
