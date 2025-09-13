@@ -33,7 +33,11 @@ Partial Class frmChangeCounter
         Me.cbToCounter = New System.Windows.Forms.ComboBox()
         Me.cbFromCounter = New System.Windows.Forms.ComboBox()
         Me.DataGridViewX1 = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.bsChangeCounter = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Change_Location_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PurchaseOrder_Date = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Actual_CC_Datetime = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IT_Equipment_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.tsNew = New System.Windows.Forms.ToolStripButton()
@@ -44,14 +48,10 @@ Partial Class frmChangeCounter
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.SearchLabel = New System.Windows.Forms.Label()
         Me.txtChangeCounter = New System.Windows.Forms.TextBox()
-        Me.Change_Location_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PurchaseOrder_Date = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Actual_CC_Datetime = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IT_Equipment_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.bsChangeCounter = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.bsChangeCounter, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
+        CType(Me.bsChangeCounter, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tsCancel
@@ -146,8 +146,40 @@ Partial Class frmChangeCounter
         Me.DataGridViewX1.Size = New System.Drawing.Size(730, 294)
         Me.DataGridViewX1.TabIndex = 53
         '
-        'bsChangeCounter
+        'Change_Location_Id
         '
+        Me.Change_Location_Id.DataPropertyName = "Change_Counter_Id"
+        Me.Change_Location_Id.HeaderText = "Change Counter Id"
+        Me.Change_Location_Id.Name = "Change_Location_Id"
+        Me.Change_Location_Id.ReadOnly = True
+        '
+        'Column2
+        '
+        Me.Column2.DataPropertyName = "From_Counter"
+        Me.Column2.HeaderText = "From Counter"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'PurchaseOrder_Date
+        '
+        Me.PurchaseOrder_Date.DataPropertyName = "To_Counter"
+        Me.PurchaseOrder_Date.HeaderText = "To Counter"
+        Me.PurchaseOrder_Date.Name = "PurchaseOrder_Date"
+        Me.PurchaseOrder_Date.ReadOnly = True
+        '
+        'Actual_CC_Datetime
+        '
+        Me.Actual_CC_Datetime.DataPropertyName = "Actual_Change_Counter_Datetime"
+        Me.Actual_CC_Datetime.HeaderText = "Actual Change Counter Datetime"
+        Me.Actual_CC_Datetime.Name = "Actual_CC_Datetime"
+        Me.Actual_CC_Datetime.ReadOnly = True
+        '
+        'IT_Equipment_Id
+        '
+        Me.IT_Equipment_Id.DataPropertyName = "IT_Equipment_Id"
+        Me.IT_Equipment_Id.HeaderText = "Control No."
+        Me.IT_Equipment_Id.Name = "IT_Equipment_Id"
+        Me.IT_Equipment_Id.ReadOnly = True
         '
         'Label1
         '
@@ -227,40 +259,8 @@ Partial Class frmChangeCounter
         Me.txtChangeCounter.Size = New System.Drawing.Size(137, 20)
         Me.txtChangeCounter.TabIndex = 50
         '
-        'Change_Location_Id
+        'bsChangeCounter
         '
-        Me.Change_Location_Id.DataPropertyName = "Change_Counter_Id"
-        Me.Change_Location_Id.HeaderText = "Change Counter Id"
-        Me.Change_Location_Id.Name = "Change_Location_Id"
-        Me.Change_Location_Id.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.DataPropertyName = "From_Counter"
-        Me.Column2.HeaderText = "From Counter"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'PurchaseOrder_Date
-        '
-        Me.PurchaseOrder_Date.DataPropertyName = "To_Counter"
-        Me.PurchaseOrder_Date.HeaderText = "To Counter"
-        Me.PurchaseOrder_Date.Name = "PurchaseOrder_Date"
-        Me.PurchaseOrder_Date.ReadOnly = True
-        '
-        'Actual_CC_Datetime
-        '
-        Me.Actual_CC_Datetime.DataPropertyName = "Actual_Change_Counter_Datetime"
-        Me.Actual_CC_Datetime.HeaderText = "Actual Change Counter Datetime"
-        Me.Actual_CC_Datetime.Name = "Actual_CC_Datetime"
-        Me.Actual_CC_Datetime.ReadOnly = True
-        '
-        'IT_Equipment_Id
-        '
-        Me.IT_Equipment_Id.DataPropertyName = "IT_Equipment_Id"
-        Me.IT_Equipment_Id.HeaderText = "Control No."
-        Me.IT_Equipment_Id.Name = "IT_Equipment_Id"
-        Me.IT_Equipment_Id.ReadOnly = True
         '
         'frmChangeCounter
         '
@@ -283,9 +283,9 @@ Partial Class frmChangeCounter
         Me.Name = "frmChangeCounter"
         Me.Text = "Change Counter"
         CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.bsChangeCounter, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
+        CType(Me.bsChangeCounter, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

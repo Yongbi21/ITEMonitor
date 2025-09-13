@@ -7,4 +7,8 @@
         form.Location = nloc
     End Sub
 
+
+    Public dbSupplier As String = "SGCPROFILE"
+
+
 End Module

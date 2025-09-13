@@ -1,3 +1,5 @@
+Imports System.Data.SqlClient
+
 Public Class frmEquipment
 
 
@@ -146,8 +148,8 @@ Public Class frmEquipment
         txtControlNo.ReadOnly = False
         txtMachineSerialNo.Enabled = False
         txtMachineSerialNo.ReadOnly = False
-        txtStore.Enabled = False
-        txtStore.ReadOnly = False
+        'txtStore.Enabled = False
+        'txtStore.ReadOnly = False
         cbBir.Enabled = False
         cbCounter.Enabled = False
         cbEquipmentType.Enabled = False
@@ -191,7 +193,7 @@ Public Class frmEquipment
         ' Clear textboxes
         txtControlNo.Text = "Default"
         txtMachineSerialNo.Clear()
-        txtStore.Clear()
+        'txtStore.Clear()
         cbBir.SelectedIndex = -1
         cbCounter.SelectedIndex = -1
         cbEquipmentType.SelectedIndex = -1
@@ -209,8 +211,8 @@ Public Class frmEquipment
         txtControlNo.Enabled = False
         txtMachineSerialNo.Enabled = True
         txtMachineSerialNo.ReadOnly = False
-        txtStore.Enabled = True
-        txtStore.ReadOnly = False
+        'txtStore.Enabled = True
+        'txtStore.ReadOnly = False
         cbBir.Enabled = True
         cbCounter.Enabled = True
         cbEquipmentType.Enabled = True
@@ -241,8 +243,8 @@ Public Class frmEquipment
             txtControlNo.Enabled = False ' Cannot edit control number
             txtMachineSerialNo.Enabled = True
             txtMachineSerialNo.ReadOnly = False
-            txtStore.Enabled = True
-            txtStore.ReadOnly = False
+            'txtStore.Enabled = True
+            'txtStore.ReadOnly = False
             cbBir.Enabled = True
             cbCounter.Enabled = True
             cbEquipmentType.Enabled = True
@@ -270,7 +272,7 @@ Public Class frmEquipment
                 ' NOTE: Assuming the find buttons populate the Tag property of the textboxes with the selected IDs.
                 sqlParams.Add(New System.Data.SqlClient.SqlParameter("@ControlNumber", txtControlNo.Text))
                 sqlParams.Add(New System.Data.SqlClient.SqlParameter("@MachineSerialNumber", txtMachineSerialNo.Text))
-                sqlParams.Add(New System.Data.SqlClient.SqlParameter("@Store", txtStore.Text))
+                'sqlParams.Add(New System.Data.SqlClient.SqlParameter("@Store", txtStore.Text))
                 sqlParams.Add(New System.Data.SqlClient.SqlParameter("@isCounterUse", If(cbCounter.SelectedItem IsNot Nothing AndAlso cbCounter.SelectedItem.ToString() = "Yes", 1, 0)))
                 sqlParams.Add(New System.Data.SqlClient.SqlParameter("@isRegisterBir", If(cbBir.SelectedItem IsNot Nothing AndAlso cbBir.SelectedItem.ToString() = "Yes", 1, 0)))
 
@@ -318,7 +320,6 @@ Public Class frmEquipment
                 ' Construct the inline SQL UPDATE statement
                 Dim sqlQuery As String = "UPDATE ITEquipment SET " &
                                          "Machine_Serial_Number = @MachineSerialNumber, " &
-                                         "Store = @Store, " &
                                          "isCounter_Use = @isCounterUse, " &
                                          "isRegister_Bir = @isRegisterBir, " &
                                          "Counter_Id = @CounterId, " &
@@ -329,11 +330,14 @@ Public Class frmEquipment
                                          "Purchase_Order_Id = @PurchaseOrderId " &
                                          "WHERE IT_Equipment_Id = @ITEquipmentId"
 
+                '"Store = @Store, " &
+
+
                 Dim sqlParams As New List(Of System.Data.SqlClient.SqlParameter)
 
                 sqlParams.Add(New System.Data.SqlClient.SqlParameter("@ITEquipmentId", equipmentId))
                 sqlParams.Add(New System.Data.SqlClient.SqlParameter("@MachineSerialNumber", txtMachineSerialNo.Text))
-                sqlParams.Add(New System.Data.SqlClient.SqlParameter("@Store", txtStore.Text))
+                'sqlParams.Add(New System.Data.SqlClient.SqlParameter("@Store", txtStore.Text))
                 sqlParams.Add(New System.Data.SqlClient.SqlParameter("@isCounterUse", If(cbCounter.SelectedItem IsNot Nothing AndAlso cbCounter.SelectedItem.ToString() = "Yes", 1, 0)))
                 sqlParams.Add(New System.Data.SqlClient.SqlParameter("@isRegisterBir", If(cbBir.SelectedItem IsNot Nothing AndAlso cbBir.SelectedItem.ToString() = "Yes", 1, 0)))
                 sqlParams.Add(New System.Data.SqlClient.SqlParameter("@CounterId", If(txtCounterName.Tag IsNot Nothing, txtCounterName.Tag, DBNull.Value)))
@@ -404,7 +408,7 @@ Public Class frmEquipment
             Dim counterId As Object = currentRow("Counter_Id")
             Dim purchaseOrderId As Object = currentRow("Purchase_Order_Id")
             Dim machineSerialNumber As Object = currentRow("Machine_Serial_Number")
-            Dim store As Object = currentRow("Store")
+            'Dim store As Object = currentRow("Store")
             Dim isCounterUse As Object = currentRow("isCounter_Use")
             Dim isRegisterBir As Object = currentRow("isRegister_Bir")
 
@@ -423,7 +427,7 @@ Public Class frmEquipment
             ' Populate textboxes with direct values 
             txtControlNo.Text = currentRow("IT_Equipment_Id").ToString()
             txtMachineSerialNo.Text = machineSerialNumber.ToString()
-            txtStore.Text = store.ToString()
+            'txtStore.Text = store.ToString()
 
             If isCounterUse IsNot DBNull.Value AndAlso CBool(isCounterUse) Then
                 cbCounter.SelectedItem = "Yes"
@@ -447,7 +451,7 @@ Public Class frmEquipment
             txtPurchaseOrder.Tag = Nothing
             txtControlNo.Clear()
             txtMachineSerialNo.Clear()
-            txtStore.Clear()
+            'txtStore.Clear()
             cbCounter.SelectedIndex = -1
             cbBir.SelectedIndex = -1
         End If
@@ -599,40 +603,70 @@ Public Class frmEquipment
     End Sub
 
     Private Sub tsPrintSticker_Click(sender As Object, e As EventArgs) Handles tsPrintSticker.Click
+        If equipmentGridView.SelectedRows.Count = 0 Then
+            MessageBox.Show("Please select one or more equipment items to print a sticker.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
+        End If
+
+        Dim selectedRows As New List(Of DataRowView)
+        Dim alreadyPrintedCount As Integer = 0
+        For Each row As DataGridViewRow In equipmentGridView.SelectedRows
+            Dim drv As DataRowView = CType(row.DataBoundItem, DataRowView)
+            selectedRows.Add(drv)
+            If Not IsDBNull(drv("IsStickerPrinted")) AndAlso CBool(drv("IsStickerPrinted")) Then
+                alreadyPrintedCount += 1
+            End If
+        Next
+
+        If alreadyPrintedCount > 0 Then
+            Dim msg As String = $"{alreadyPrintedCount} of the selected items have already had a sticker printed. Do you want to reprint them?"
+            If MessageBox.Show(msg, "Reprint Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+                Return
+            End If
+        End If
+
         dsrpt.Tables("IT Sticker").Clear()
         t = dsrpt.Tables("IT Sticker")
         Dim count As Integer = 0
+        Dim equipmentIdsToUpdate As New List(Of String)
+        Dim r As DataRow = Nothing
 
-        With bsEquipment
-            If .Count <= 0 Then Return
-            .MoveFirst()
+        For Each drv As DataRowView In selectedRows
+            If count = 3 Then
+                count = 0
+                t.Rows.Add(r)
+            End If
+            count += 1
+            If count = 1 Then r = t.NewRow
 
-            For i As Integer = 0 To .Count - 1
-                If count = 3 Then
-                    count = 0
-                    t.Rows.Add(r)
-                End If
-                count += 1
-                If count = 1 Then r = t.NewRow
+            Dim equipmentId As String = drv("IT_Equipment_Id").ToString()
+            r("IT_Equipment_Id" & count) = equipmentId
+            equipmentIdsToUpdate.Add(equipmentId)
 
-                r("IT_Equipment_Id" & count) = .Current("IT_Equipment_Id")
+            If IsDBNull(drv("Purchase_Order_Date1")) OrElse drv("Purchase_Order_Date1") Is Nothing Then
+                r("Purchase_Order_Date" & count) = ""
+            Else
+                r("Purchase_Order_Date" & count) = Format(drv("Purchase_Order_Date1"), "MM/dd/yyyy")
+            End If
+        Next
 
-                ' Format date as string in VB - Crystal just displays it
-                If IsDBNull(.Current("Purchase_Order_Date1")) OrElse .Current("Purchase_Order_Date1") Is Nothing Then
-                    r("Purchase_Order_Date" & count) = ""
-                Else
-                    r("Purchase_Order_Date" & count) = Format(.Current("Purchase_Order_Date1"), "MM/dd/yyyy")
-                End If
+        If count > 0 Then t.Rows.Add(r)
 
-                .MoveNext()
+        m_report = New stickerReport
+        m_report.SetDataSource(dsrpt)
+        viewRPT() ' Assuming this is a blocking call or has a way to know it succeeded
+
+        ' Update the database
+        Try
+            For Each id As String In equipmentIdsToUpdate
+                Dim sqlParams As New List(Of SqlParameter)
+                sqlParams.Add(New SqlParameter("@ITEquipmentId", id))
+                da.ExecuteNonQuery(dbName, "UPDATE ITEquipment SET IsStickerPrinted = 1 WHERE IT_Equipment_Id = @ITEquipmentId", sqlParams)
             Next
-
-            If count > 0 Then t.Rows.Add(r)
-
-            m_report = New stickerReport
-            m_report.SetDataSource(dsrpt)
-            viewRPT()
-        End With
+            loadMain() ' Refresh data
+        Catch ex As Exception
+            MessageBox.Show("An error occurred while updating print status: " & ex.Message, "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
 

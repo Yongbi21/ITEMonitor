@@ -30,13 +30,13 @@ Partial Class frmEditPurchaseOrder
         Me.txtSupplierNumber = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.txtMemberName = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.label = New System.Windows.Forms.Label()
         Me.txtInvoiceNumber = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.txtPurchaseOrderNumber = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.SearchLabel = New System.Windows.Forms.Label()
+        Me.txtSupplierName = New DevComponents.DotNetBar.Controls.TextBoxX()
         CType(Me.txtInvoiceDate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPurchaseOrderDate, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -191,9 +191,9 @@ Partial Class frmEditPurchaseOrder
         Me.Label4.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(291, 222)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(109, 19)
+        Me.Label4.Size = New System.Drawing.Size(107, 19)
         Me.Label4.TabIndex = 78
-        Me.Label4.Text = "Member Name:"
+        Me.Label4.Text = "Supplier Name:"
         '
         'Label5
         '
@@ -204,18 +204,6 @@ Partial Class frmEditPurchaseOrder
         Me.Label5.Size = New System.Drawing.Size(120, 19)
         Me.Label5.TabIndex = 77
         Me.Label5.Text = "Supplier Number:"
-        '
-        'txtMemberName
-        '
-        '
-        '
-        '
-        Me.txtMemberName.Border.Class = ""
-        Me.txtMemberName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.txtMemberName.Location = New System.Drawing.Point(295, 250)
-        Me.txtMemberName.Name = "txtMemberName"
-        Me.txtMemberName.Size = New System.Drawing.Size(197, 20)
-        Me.txtMemberName.TabIndex = 76
         '
         'Label2
         '
@@ -281,11 +269,24 @@ Partial Class frmEditPurchaseOrder
         Me.SearchLabel.TabIndex = 70
         Me.SearchLabel.Text = "Purchase Order Number:"
         '
+        'txtSupplierName
+        '
+        '
+        '
+        '
+        Me.txtSupplierName.Border.Class = "TextBoxBorder"
+        Me.txtSupplierName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.txtSupplierName.Location = New System.Drawing.Point(295, 250)
+        Me.txtSupplierName.Name = "txtSupplierName"
+        Me.txtSupplierName.Size = New System.Drawing.Size(197, 20)
+        Me.txtSupplierName.TabIndex = 85
+        '
         'frmEditPurchaseOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(546, 353)
+        Me.Controls.Add(Me.txtSupplierName)
         Me.Controls.Add(Me.txtInvoiceDate)
         Me.Controls.Add(Me.txtPurchaseOrderDate)
         Me.Controls.Add(Me.btnCancel)
@@ -294,7 +295,6 @@ Partial Class frmEditPurchaseOrder
         Me.Controls.Add(Me.txtSupplierNumber)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.txtMemberName)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.label)
         Me.Controls.Add(Me.txtInvoiceNumber)
@@ -318,11 +318,11 @@ Partial Class frmEditPurchaseOrder
     Friend WithEvents txtSupplierNumber As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents txtMemberName As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Label2 As Label
     Friend WithEvents label As Label
     Friend WithEvents txtInvoiceNumber As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents txtPurchaseOrderNumber As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Label1 As Label
     Friend WithEvents SearchLabel As Label
+    Friend WithEvents txtSupplierName As DevComponents.DotNetBar.Controls.TextBoxX
 End Class

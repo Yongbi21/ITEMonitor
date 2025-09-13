@@ -25,21 +25,59 @@ Partial Class frmLoadPermitNumber
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLoadPermitNumber))
-        Me.DataGridViewX1 = New DevComponents.DotNetBar.Controls.DataGridViewX()
         Me.bsPermitLoad = New System.Windows.Forms.BindingSource(Me.components)
-        Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.SearchLabel = New System.Windows.Forms.Label()
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.Permit_Date = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Permit_Number = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Permit_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewX1 = New DevComponents.DotNetBar.Controls.DataGridViewX()
         Me.tsSelect = New System.Windows.Forms.ToolStripButton()
         Me.tsClose = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.enterBtnCounter = New System.Windows.Forms.Button()
-        Me.Permit_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Permit_Number = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Permit_Date = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsPermitLoad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'SearchLabel
+        '
+        Me.SearchLabel.AutoSize = True
+        Me.SearchLabel.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SearchLabel.Location = New System.Drawing.Point(11, 28)
+        Me.SearchLabel.Name = "SearchLabel"
+        Me.SearchLabel.Size = New System.Drawing.Size(56, 19)
+        Me.SearchLabel.TabIndex = 37
+        Me.SearchLabel.Text = "Search:"
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Location = New System.Drawing.Point(73, 28)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(198, 20)
+        Me.txtSearch.TabIndex = 38
+        '
+        'Permit_Date
+        '
+        Me.Permit_Date.DataPropertyName = "Permit_Date"
+        Me.Permit_Date.HeaderText = "Permit Date"
+        Me.Permit_Date.Name = "Permit_Date"
+        Me.Permit_Date.ReadOnly = True
+        '
+        'Permit_Number
+        '
+        Me.Permit_Number.DataPropertyName = "Permit_Number"
+        Me.Permit_Number.HeaderText = "Permit Number"
+        Me.Permit_Number.Name = "Permit_Number"
+        Me.Permit_Number.ReadOnly = True
+        '
+        'Permit_Id
+        '
+        Me.Permit_Id.DataPropertyName = "Permit_Id"
+        Me.Permit_Id.HeaderText = "Permit ID"
+        Me.Permit_Id.Name = "Permit_Id"
+        Me.Permit_Id.ReadOnly = True
         '
         'DataGridViewX1
         '
@@ -69,33 +107,6 @@ Partial Class frmLoadPermitNumber
         Me.DataGridViewX1.Size = New System.Drawing.Size(482, 303)
         Me.DataGridViewX1.TabIndex = 40
         '
-        'txtSearch
-        '
-        Me.txtSearch.Location = New System.Drawing.Point(73, 28)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(198, 20)
-        Me.txtSearch.TabIndex = 38
-        '
-        'SearchLabel
-        '
-        Me.SearchLabel.AutoSize = True
-        Me.SearchLabel.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SearchLabel.Location = New System.Drawing.Point(11, 28)
-        Me.SearchLabel.Name = "SearchLabel"
-        Me.SearchLabel.Size = New System.Drawing.Size(56, 19)
-        Me.SearchLabel.TabIndex = 37
-        Me.SearchLabel.Text = "Search:"
-        '
-        'ToolStrip1
-        '
-        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsSelect, Me.tsClose})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 388)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(506, 25)
-        Me.ToolStrip1.TabIndex = 61
-        Me.ToolStrip1.Text = "ToolStrip1"
-        '
         'tsSelect
         '
         Me.tsSelect.Image = CType(resources.GetObject("tsSelect.Image"), System.Drawing.Image)
@@ -112,6 +123,16 @@ Partial Class frmLoadPermitNumber
         Me.tsClose.Size = New System.Drawing.Size(56, 22)
         Me.tsClose.Text = "Close"
         '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsSelect, Me.tsClose})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 388)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(506, 25)
+        Me.ToolStrip1.TabIndex = 61
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
         'enterBtnCounter
         '
         Me.enterBtnCounter.Location = New System.Drawing.Point(273, 27)
@@ -120,27 +141,6 @@ Partial Class frmLoadPermitNumber
         Me.enterBtnCounter.TabIndex = 62
         Me.enterBtnCounter.Text = "Enter"
         Me.enterBtnCounter.UseVisualStyleBackColor = True
-        '
-        'Permit_Id
-        '
-        Me.Permit_Id.DataPropertyName = "Permit_Id"
-        Me.Permit_Id.HeaderText = "Permit ID"
-        Me.Permit_Id.Name = "Permit_Id"
-        Me.Permit_Id.ReadOnly = True
-        '
-        'Permit_Number
-        '
-        Me.Permit_Number.DataPropertyName = "Permit_Number"
-        Me.Permit_Number.HeaderText = "Permit Number"
-        Me.Permit_Number.Name = "Permit_Number"
-        Me.Permit_Number.ReadOnly = True
-        '
-        'Permit_Date
-        '
-        Me.Permit_Date.DataPropertyName = "Permit_Date"
-        Me.Permit_Date.HeaderText = "Permit Date"
-        Me.Permit_Date.Name = "Permit_Date"
-        Me.Permit_Date.ReadOnly = True
         '
         'frmLoadPermitNumber
         '
@@ -154,23 +154,23 @@ Partial Class frmLoadPermitNumber
         Me.Controls.Add(Me.SearchLabel)
         Me.Name = "frmLoadPermitNumber"
         Me.Text = "Permit Number Table"
-        CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.bsPermitLoad, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents DataGridViewX1 As DevComponents.DotNetBar.Controls.DataGridViewX
-    Friend WithEvents txtSearch As TextBox
-    Friend WithEvents SearchLabel As Label
     Friend WithEvents bsPermitLoad As BindingSource
-    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents SearchLabel As Label
+    Friend WithEvents txtSearch As TextBox
+    Friend WithEvents Permit_Date As DataGridViewTextBoxColumn
+    Friend WithEvents Permit_Number As DataGridViewTextBoxColumn
+    Friend WithEvents Permit_Id As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewX1 As DevComponents.DotNetBar.Controls.DataGridViewX
     Friend WithEvents tsSelect As ToolStripButton
     Friend WithEvents tsClose As ToolStripButton
+    Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents enterBtnCounter As Button
-    Friend WithEvents Permit_Id As DataGridViewTextBoxColumn
-    Friend WithEvents Permit_Number As DataGridViewTextBoxColumn
-    Friend WithEvents Permit_Date As DataGridViewTextBoxColumn
 End Class

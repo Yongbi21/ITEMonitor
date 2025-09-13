@@ -135,11 +135,27 @@
             End If
 
             Try
+                Dim poDate As DateTime
+                Dim poDateValue As String = Convert.ToString(selectedRow.Cells("Purchase_Order_Date").Value)
+                If Not DateTime.TryParse(poDateValue, poDate) Then
+                    MessageBox.Show("A valid Purchase Order Date is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Return
+                End If
+
                 Dim sqlParams As New List(Of SqlClient.SqlParameter)
                 sqlParams.Add(New SqlClient.SqlParameter("@PurchaseOrderId", purchaseOrderId))
                 sqlParams.Add(New SqlClient.SqlParameter("@PurchaseOrderNumber", newPurchaseOrderNumber))
                 sqlParams.Add(New SqlClient.SqlParameter("@InvoiceNumber", Convert.ToString(selectedRow.Cells("Invoice_Number").Value)))
-                sqlParams.Add(New SqlClient.SqlParameter("@InvoiceDate", Convert.ToDateTime(selectedRow.Cells("Invoice_Date").Value)))
+                sqlParams.Add(New SqlClient.SqlParameter("@PurchaseOrderDate", poDate))
+
+                Dim invoiceDate As DateTime
+                Dim invoiceDateValue As String = Convert.ToString(selectedRow.Cells("Invoice_Date").Value)
+                If DateTime.TryParse(invoiceDateValue, invoiceDate) Then
+                    sqlParams.Add(New SqlClient.SqlParameter("@InvoiceDate", invoiceDate))
+                Else
+                    sqlParams.Add(New SqlClient.SqlParameter("@InvoiceDate", DBNull.Value))
+                End If
+
                 sqlParams.Add(New SqlClient.SqlParameter("@SupplierNumber", Convert.ToString(selectedRow.Cells("Supplier_Number").Value)))
                 sqlParams.Add(New SqlClient.SqlParameter("@MemberName", Convert.ToString(selectedRow.Cells("Member_Name").Value)))
 

@@ -28,15 +28,16 @@ Partial Class frmAddPurchaseOrder
         Me.txtInvoiceNumber = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.label = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtMemberName = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtSupplierNumber = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.btnSave = New DevComponents.DotNetBar.ButtonX()
         Me.btnCancel = New DevComponents.DotNetBar.ButtonX()
         Me.txtPurchaseOrderDate = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
         Me.txtInvoiceDate = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
+        Me.txtSupplierNumber = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.tstSupplierName = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.btnSearchSupplier = New System.Windows.Forms.Button()
         CType(Me.txtPurchaseOrderDate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtInvoiceDate, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -55,7 +56,7 @@ Partial Class frmAddPurchaseOrder
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(293, 71)
+        Me.Label1.Location = New System.Drawing.Point(307, 71)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(114, 19)
         Me.Label1.TabIndex = 53
@@ -80,7 +81,7 @@ Partial Class frmAddPurchaseOrder
         '
         Me.txtInvoiceNumber.Border.Class = "TextBoxBorder"
         Me.txtInvoiceNumber.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.txtInvoiceNumber.Location = New System.Drawing.Point(297, 99)
+        Me.txtInvoiceNumber.Location = New System.Drawing.Point(311, 99)
         Me.txtInvoiceNumber.Name = "txtInvoiceNumber"
         Me.txtInvoiceNumber.Size = New System.Drawing.Size(197, 20)
         Me.txtInvoiceNumber.TabIndex = 56
@@ -99,23 +100,11 @@ Partial Class frmAddPurchaseOrder
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(293, 140)
+        Me.Label2.Location = New System.Drawing.Point(307, 140)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(94, 19)
         Me.Label2.TabIndex = 58
         Me.Label2.Text = "Invoice Date:"
-        '
-        'txtMemberName
-        '
-        '
-        '
-        '
-        Me.txtMemberName.Border.Class = ""
-        Me.txtMemberName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.txtMemberName.Location = New System.Drawing.Point(297, 242)
-        Me.txtMemberName.Name = "txtMemberName"
-        Me.txtMemberName.Size = New System.Drawing.Size(197, 20)
-        Me.txtMemberName.TabIndex = 60
         '
         'Label5
         '
@@ -131,23 +120,11 @@ Partial Class frmAddPurchaseOrder
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(293, 214)
+        Me.Label4.Location = New System.Drawing.Point(307, 214)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(109, 19)
+        Me.Label4.Size = New System.Drawing.Size(107, 19)
         Me.Label4.TabIndex = 62
-        Me.Label4.Text = "Member Name:"
-        '
-        'txtSupplierNumber
-        '
-        '
-        '
-        '
-        Me.txtSupplierNumber.Border.Class = "TextBoxBorder"
-        Me.txtSupplierNumber.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.txtSupplierNumber.Location = New System.Drawing.Point(41, 242)
-        Me.txtSupplierNumber.Name = "txtSupplierNumber"
-        Me.txtSupplierNumber.Size = New System.Drawing.Size(197, 20)
-        Me.txtSupplierNumber.TabIndex = 63
+        Me.Label4.Text = "Supplier Name:"
         '
         'Label6
         '
@@ -240,7 +217,7 @@ Partial Class frmAddPurchaseOrder
         Me.txtInvoiceDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.txtInvoiceDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
         Me.txtInvoiceDate.ButtonDropDown.Visible = True
-        Me.txtInvoiceDate.Location = New System.Drawing.Point(297, 168)
+        Me.txtInvoiceDate.Location = New System.Drawing.Point(311, 168)
         '
         '
         '
@@ -281,11 +258,48 @@ Partial Class frmAddPurchaseOrder
         Me.txtInvoiceDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.txtInvoiceDate.TabIndex = 69
         '
+        'txtSupplierNumber
+        '
+        '
+        '
+        '
+        Me.txtSupplierNumber.Border.Class = "TextBoxBorder"
+        Me.txtSupplierNumber.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.txtSupplierNumber.Location = New System.Drawing.Point(41, 242)
+        Me.txtSupplierNumber.Name = "txtSupplierNumber"
+        Me.txtSupplierNumber.Size = New System.Drawing.Size(197, 20)
+        Me.txtSupplierNumber.TabIndex = 63
+        '
+        'tstSupplierName
+        '
+        '
+        '
+        '
+        Me.tstSupplierName.Border.Class = "TextBoxBorder"
+        Me.tstSupplierName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tstSupplierName.Location = New System.Drawing.Point(311, 242)
+        Me.tstSupplierName.Name = "tstSupplierName"
+        Me.tstSupplierName.Size = New System.Drawing.Size(197, 20)
+        Me.tstSupplierName.TabIndex = 70
+        '
+        'btnSearchSupplier
+        '
+        Me.btnSearchSupplier.Location = New System.Drawing.Point(239, 240)
+        Me.btnSearchSupplier.Name = "btnSearchSupplier"
+        Me.btnSearchSupplier.Size = New System.Drawing.Size(32, 23)
+        Me.btnSearchSupplier.TabIndex = 72
+        Me.btnSearchSupplier.Text = "......."
+        Me.btnSearchSupplier.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnSearchSupplier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btnSearchSupplier.UseVisualStyleBackColor = True
+        '
         'frmAddPurchaseOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(588, 332)
+        Me.Controls.Add(Me.btnSearchSupplier)
+        Me.Controls.Add(Me.tstSupplierName)
         Me.Controls.Add(Me.txtInvoiceDate)
         Me.Controls.Add(Me.txtPurchaseOrderDate)
         Me.Controls.Add(Me.btnCancel)
@@ -294,7 +308,6 @@ Partial Class frmAddPurchaseOrder
         Me.Controls.Add(Me.txtSupplierNumber)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.txtMemberName)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.label)
         Me.Controls.Add(Me.txtInvoiceNumber)
@@ -316,13 +329,14 @@ Partial Class frmAddPurchaseOrder
     Friend WithEvents txtInvoiceNumber As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents label As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents txtMemberName As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents txtSupplierNumber As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Label6 As Label
     Friend WithEvents btnSave As DevComponents.DotNetBar.ButtonX
     Friend WithEvents btnCancel As DevComponents.DotNetBar.ButtonX
     Friend WithEvents txtPurchaseOrderDate As DevComponents.Editors.DateTimeAdv.DateTimeInput
     Friend WithEvents txtInvoiceDate As DevComponents.Editors.DateTimeAdv.DateTimeInput
+    Friend WithEvents txtSupplierNumber As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents tstSupplierName As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents btnSearchSupplier As Button
 End Class

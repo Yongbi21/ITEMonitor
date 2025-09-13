@@ -36,10 +36,14 @@ Public Class frmEditPurchaseOrder
                 Dim row As DataRow = dt.Rows(0)
                 txtPurchaseOrderNumber.Text = row("PurchaseOrderNumber").ToString()
                 txtInvoiceNumber.Text = row("InvoiceNumber").ToString()
-                txtPurchaseOrderDate.Value = CDate(row("PurchaseOrderDate"))
-                txtInvoiceDate.Value = CDate(row("InvoiceDate"))
+                If Not IsDBNull(row("PurchaseOrderDate")) Then
+                    txtPurchaseOrderDate.Value = CDate(row("PurchaseOrderDate"))
+                End If
+                If Not IsDBNull(row("InvoiceDate")) Then
+                    txtInvoiceDate.Value = CDate(row("InvoiceDate"))
+                End If
                 txtSupplierNumber.Text = row("SupplierNumber").ToString()
-                txtMemberName.Text = row("MemberName").ToString()
+                txtSupplierName.Text = row("MemberName").ToString()
 
                 ' Set form title to show which PO we're editing
                 Me.Text = $"Edit Purchase Order - {row("PurchaseOrderNumber")}"
@@ -66,7 +70,7 @@ Public Class frmEditPurchaseOrder
             sqlParams.Add(New SqlParameter("@PurchaseOrderNumber", txtPurchaseOrderNumber.Text.Trim()))
             sqlParams.Add(New SqlParameter("@InvoiceNumber", txtInvoiceNumber.Text.Trim()))
             sqlParams.Add(New SqlParameter("@SupplierNumber", txtSupplierNumber.Text.Trim()))
-            sqlParams.Add(New SqlParameter("@MemberName", txtMemberName.Text.Trim()))
+            sqlParams.Add(New SqlParameter("@MemberName", txtSupplierName.Text.Trim()))
 
             Debug.WriteLine("Calling UpdatePurchaseOrder stored procedure...")
 

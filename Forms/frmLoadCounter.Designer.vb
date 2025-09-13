@@ -26,19 +26,50 @@ Partial Class frmLoadCounter
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLoadCounter))
         Me.bsCounterLoad = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DataGridViewX1 = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.Counter_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Counter_Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.Counter_Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Counter_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewX1 = New DevComponents.DotNetBar.Controls.DataGridViewX()
+        Me.enterBtnCounter = New System.Windows.Forms.Button()
         Me.tsSelect = New System.Windows.Forms.ToolStripButton()
         Me.tsClose = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.enterBtnCounter = New System.Windows.Forms.Button()
         CType(Me.bsCounterLoad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(17, 36)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(56, 19)
+        Me.Label2.TabIndex = 55
+        Me.Label2.Text = "Search:"
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Location = New System.Drawing.Point(79, 37)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(200, 20)
+        Me.txtSearch.TabIndex = 56
+        '
+        'Counter_Name
+        '
+        Me.Counter_Name.DataPropertyName = "Counter_Name"
+        Me.Counter_Name.HeaderText = "Counter Name"
+        Me.Counter_Name.Name = "Counter_Name"
+        Me.Counter_Name.ReadOnly = True
+        '
+        'Counter_Id
+        '
+        Me.Counter_Id.DataPropertyName = "Counter_Id"
+        Me.Counter_Id.HeaderText = "Counter ID"
+        Me.Counter_Id.Name = "Counter_Id"
+        Me.Counter_Id.ReadOnly = True
         '
         'DataGridViewX1
         '
@@ -68,36 +99,14 @@ Partial Class frmLoadCounter
         Me.DataGridViewX1.Size = New System.Drawing.Size(446, 268)
         Me.DataGridViewX1.TabIndex = 58
         '
-        'Counter_Id
+        'enterBtnCounter
         '
-        Me.Counter_Id.DataPropertyName = "Counter_Id"
-        Me.Counter_Id.HeaderText = "Counter ID"
-        Me.Counter_Id.Name = "Counter_Id"
-        Me.Counter_Id.ReadOnly = True
-        '
-        'Counter_Name
-        '
-        Me.Counter_Name.DataPropertyName = "Counter_Name"
-        Me.Counter_Name.HeaderText = "Counter Name"
-        Me.Counter_Name.Name = "Counter_Name"
-        Me.Counter_Name.ReadOnly = True
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Location = New System.Drawing.Point(79, 37)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(200, 20)
-        Me.txtSearch.TabIndex = 56
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(17, 36)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(56, 19)
-        Me.Label2.TabIndex = 55
-        Me.Label2.Text = "Search:"
+        Me.enterBtnCounter.Location = New System.Drawing.Point(285, 36)
+        Me.enterBtnCounter.Name = "enterBtnCounter"
+        Me.enterBtnCounter.Size = New System.Drawing.Size(75, 24)
+        Me.enterBtnCounter.TabIndex = 59
+        Me.enterBtnCounter.Text = "Enter"
+        Me.enterBtnCounter.UseVisualStyleBackColor = True
         '
         'tsSelect
         '
@@ -125,15 +134,6 @@ Partial Class frmLoadCounter
         Me.ToolStrip1.TabIndex = 60
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'enterBtnCounter
-        '
-        Me.enterBtnCounter.Location = New System.Drawing.Point(285, 36)
-        Me.enterBtnCounter.Name = "enterBtnCounter"
-        Me.enterBtnCounter.Size = New System.Drawing.Size(75, 24)
-        Me.enterBtnCounter.TabIndex = 59
-        Me.enterBtnCounter.Text = "Enter"
-        Me.enterBtnCounter.UseVisualStyleBackColor = True
-        '
         'frmLoadCounter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -156,14 +156,14 @@ Partial Class frmLoadCounter
     End Sub
     Friend WithEvents bsCounterLoad As BindingSource
     Private WithEvents CountersTextBox As TextBox
-    Friend WithEvents DataGridViewX1 As DevComponents.DotNetBar.Controls.DataGridViewX
-    Friend WithEvents Counter_Id As DataGridViewTextBoxColumn
-    Friend WithEvents Counter_Name As DataGridViewTextBoxColumn
     Friend WithEvents Label1 As Label
-    Friend WithEvents txtSearch As TextBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents txtSearch As TextBox
+    Friend WithEvents Counter_Name As DataGridViewTextBoxColumn
+    Friend WithEvents Counter_Id As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewX1 As DevComponents.DotNetBar.Controls.DataGridViewX
+    Friend WithEvents enterBtnCounter As Button
     Friend WithEvents tsSelect As ToolStripButton
     Friend WithEvents tsClose As ToolStripButton
     Friend WithEvents ToolStrip1 As ToolStrip
-    Friend WithEvents enterBtnCounter As Button
 End Class

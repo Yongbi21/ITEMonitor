@@ -25,8 +25,14 @@ Partial Class frmLoadPurchaseOrder
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLoadPurchaseOrder))
-        Me.bsPurchaseOrderLoad = New System.Windows.Forms.BindingSource(Me.components)
         Me.DataGridViewX1 = New DevComponents.DotNetBar.Controls.DataGridViewX()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.SearchLabel = New System.Windows.Forms.Label()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.enterBtnPurchaseOrder = New System.Windows.Forms.Button()
+        Me.tsSelect = New System.Windows.Forms.ToolStripButton()
+        Me.tsClose = New System.Windows.Forms.ToolStripButton()
+        Me.bsPurchaseOrderLoad = New System.Windows.Forms.BindingSource(Me.components)
         Me.PurchaseOrder_Id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Purchase_Order_Number = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Purchase_Order_Date = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -34,15 +40,9 @@ Partial Class frmLoadPurchaseOrder
         Me.Invoice_Date = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Supplier_Number = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Member_Name = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.txtSearch = New System.Windows.Forms.TextBox()
-        Me.SearchLabel = New System.Windows.Forms.Label()
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.tsSelect = New System.Windows.Forms.ToolStripButton()
-        Me.tsClose = New System.Windows.Forms.ToolStripButton()
-        Me.enterBtnPurchaseOrder = New System.Windows.Forms.Button()
-        CType(Me.bsPurchaseOrderLoad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
+        CType(Me.bsPurchaseOrderLoad, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridViewX1
@@ -71,6 +71,58 @@ Partial Class frmLoadPurchaseOrder
         Me.DataGridViewX1.RowHeadersVisible = False
         Me.DataGridViewX1.Size = New System.Drawing.Size(928, 306)
         Me.DataGridViewX1.TabIndex = 38
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Location = New System.Drawing.Point(83, 29)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(193, 20)
+        Me.txtSearch.TabIndex = 37
+        '
+        'SearchLabel
+        '
+        Me.SearchLabel.AutoSize = True
+        Me.SearchLabel.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SearchLabel.Location = New System.Drawing.Point(21, 29)
+        Me.SearchLabel.Name = "SearchLabel"
+        Me.SearchLabel.Size = New System.Drawing.Size(56, 19)
+        Me.SearchLabel.TabIndex = 36
+        Me.SearchLabel.Text = "Search:"
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsSelect, Me.tsClose})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 389)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(952, 25)
+        Me.ToolStrip1.TabIndex = 61
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'enterBtnPurchaseOrder
+        '
+        Me.enterBtnPurchaseOrder.Location = New System.Drawing.Point(282, 28)
+        Me.enterBtnPurchaseOrder.Name = "enterBtnPurchaseOrder"
+        Me.enterBtnPurchaseOrder.Size = New System.Drawing.Size(75, 24)
+        Me.enterBtnPurchaseOrder.TabIndex = 62
+        Me.enterBtnPurchaseOrder.Text = "Enter"
+        Me.enterBtnPurchaseOrder.UseVisualStyleBackColor = True
+        '
+        'tsSelect
+        '
+        Me.tsSelect.Image = CType(resources.GetObject("tsSelect.Image"), System.Drawing.Image)
+        Me.tsSelect.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsSelect.Name = "tsSelect"
+        Me.tsSelect.Size = New System.Drawing.Size(58, 22)
+        Me.tsSelect.Text = "Select"
+        '
+        'tsClose
+        '
+        Me.tsClose.Image = CType(resources.GetObject("tsClose.Image"), System.Drawing.Image)
+        Me.tsClose.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsClose.Name = "tsClose"
+        Me.tsClose.Size = New System.Drawing.Size(56, 22)
+        Me.tsClose.Text = "Close"
         '
         'PurchaseOrder_Id
         '
@@ -117,62 +169,10 @@ Partial Class frmLoadPurchaseOrder
         'Member_Name
         '
         Me.Member_Name.DataPropertyName = "Member_Name"
-        Me.Member_Name.HeaderText = "Member Name"
+        Me.Member_Name.HeaderText = "Supplier Name"
         Me.Member_Name.Name = "Member_Name"
         Me.Member_Name.ReadOnly = True
         Me.Member_Name.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Location = New System.Drawing.Point(83, 29)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(193, 20)
-        Me.txtSearch.TabIndex = 37
-        '
-        'SearchLabel
-        '
-        Me.SearchLabel.AutoSize = True
-        Me.SearchLabel.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SearchLabel.Location = New System.Drawing.Point(21, 29)
-        Me.SearchLabel.Name = "SearchLabel"
-        Me.SearchLabel.Size = New System.Drawing.Size(56, 19)
-        Me.SearchLabel.TabIndex = 36
-        Me.SearchLabel.Text = "Search:"
-        '
-        'ToolStrip1
-        '
-        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsSelect, Me.tsClose})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 389)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(952, 25)
-        Me.ToolStrip1.TabIndex = 61
-        Me.ToolStrip1.Text = "ToolStrip1"
-        '
-        'tsSelect
-        '
-        Me.tsSelect.Image = CType(resources.GetObject("tsSelect.Image"), System.Drawing.Image)
-        Me.tsSelect.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsSelect.Name = "tsSelect"
-        Me.tsSelect.Size = New System.Drawing.Size(58, 22)
-        Me.tsSelect.Text = "Select"
-        '
-        'tsClose
-        '
-        Me.tsClose.Image = CType(resources.GetObject("tsClose.Image"), System.Drawing.Image)
-        Me.tsClose.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsClose.Name = "tsClose"
-        Me.tsClose.Size = New System.Drawing.Size(56, 22)
-        Me.tsClose.Text = "Close"
-        '
-        'enterBtnPurchaseOrder
-        '
-        Me.enterBtnPurchaseOrder.Location = New System.Drawing.Point(282, 28)
-        Me.enterBtnPurchaseOrder.Name = "enterBtnPurchaseOrder"
-        Me.enterBtnPurchaseOrder.Size = New System.Drawing.Size(75, 24)
-        Me.enterBtnPurchaseOrder.TabIndex = 62
-        Me.enterBtnPurchaseOrder.Text = "Enter"
-        Me.enterBtnPurchaseOrder.UseVisualStyleBackColor = True
         '
         'frmLoadPurchaseOrder
         '
@@ -186,16 +186,22 @@ Partial Class frmLoadPurchaseOrder
         Me.Controls.Add(Me.SearchLabel)
         Me.Name = "frmLoadPurchaseOrder"
         Me.Text = "Purchase Order Table"
-        CType(Me.bsPurchaseOrderLoad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
+        CType(Me.bsPurchaseOrderLoad, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents bsPurchaseOrderLoad As BindingSource
     Friend WithEvents DataGridViewX1 As DevComponents.DotNetBar.Controls.DataGridViewX
+    Friend WithEvents txtSearch As TextBox
+    Friend WithEvents SearchLabel As Label
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents tsSelect As ToolStripButton
+    Friend WithEvents tsClose As ToolStripButton
+    Friend WithEvents enterBtnPurchaseOrder As Button
     Friend WithEvents PurchaseOrder_Id As DataGridViewTextBoxColumn
     Friend WithEvents Purchase_Order_Number As DataGridViewTextBoxColumn
     Friend WithEvents Purchase_Order_Date As DataGridViewTextBoxColumn
@@ -203,10 +209,4 @@ Partial Class frmLoadPurchaseOrder
     Friend WithEvents Invoice_Date As DataGridViewTextBoxColumn
     Friend WithEvents Supplier_Number As DataGridViewTextBoxColumn
     Friend WithEvents Member_Name As DataGridViewTextBoxColumn
-    Friend WithEvents txtSearch As TextBox
-    Friend WithEvents SearchLabel As Label
-    Friend WithEvents ToolStrip1 As ToolStrip
-    Friend WithEvents tsSelect As ToolStripButton
-    Friend WithEvents tsClose As ToolStripButton
-    Friend WithEvents enterBtnPurchaseOrder As Button
 End Class
