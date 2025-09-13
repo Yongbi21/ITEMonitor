@@ -616,7 +616,13 @@ Public Class frmEquipment
                 If count = 1 Then r = t.NewRow
 
                 r("IT_Equipment_Id" & count) = .Current("IT_Equipment_Id")
-                r("Purchase_Order_Date" & count) = .Current("Purchase_Order_Date1")
+
+                ' Format date as string in VB - Crystal just displays it
+                If IsDBNull(.Current("Purchase_Order_Date1")) OrElse .Current("Purchase_Order_Date1") Is Nothing Then
+                    r("Purchase_Order_Date" & count) = ""
+                Else
+                    r("Purchase_Order_Date" & count) = Format(.Current("Purchase_Order_Date1"), "MM/dd/yyyy")
+                End If
 
                 .MoveNext()
             Next
